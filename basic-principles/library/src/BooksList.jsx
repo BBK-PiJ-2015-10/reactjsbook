@@ -33,6 +33,7 @@ const books = [
              <table>
                  <thead>
                  <tr>
+                     <th>Id</th>
                      <th>Title</th>
                      <th>Author</th>
                      <th>ISBN</th>
