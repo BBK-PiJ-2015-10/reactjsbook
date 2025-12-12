@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import './BooksList.css';
 import './BooksListItem';
 import BooksListItem from "./BooksListItem";
 
-const books = [
+const initialBooks = [
     {
         id: 1,
         title: 'first book',
@@ -26,6 +27,9 @@ const books = [
 ];
 
  function BooksList(){
+
+     const [books, ] = useState(initialBooks);
+
      if (books.length === 0){
          return <div>No books found</div>;
      } else {
