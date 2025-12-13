@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import './BooksList.css';
 import './BooksListItem';
 import BooksListItem from "./BooksListItem";
@@ -26,32 +26,43 @@ const initialBooks = [
     }
 ];
 
- function BooksList(){
+function BooksList() {
 
-     const [books, ] = useState(initialBooks);
+    const [books, setBooks] = useState(initialBooks);
 
-     if (books.length === 0){
-         return <div>No books found</div>;
-     } else {
-         return (
-             <table>
-                 <thead>
-                 <tr>
-                     <th>Id</th>
-                     <th>Title</th>
-                     <th>Author</th>
-                     <th>ISBN</th>
-                     <th>Rating</th>
-                 </tr>
-                 </thead>
-                 <tbody>
-                 {books.map((book) => (
-                     <BooksListItem key={book.id} book={book} />
-                 ))}
-                 </tbody>
-             </table>
-         );
-     }
- }
+    function handleRate(id, rating) {
+        setBooks((prevState) => {
+            return prevState.map((book) => {
+                if (book.id === id) {
+                    book.rating = rating;
+                }
+                return book;
+            });
+        });
+    }
 
- export default BooksList;
+    if (books.length === 0) {
+        return <div>No books found</div>;
+    } else {
+        return (
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Rating</th>
+                </tr>
+                </thead>
+                <tbody>
+                {books.map((book) => (
+                    <BooksListItem key={book.id} book={book} onRate={handleRate}/>
+                ))}
+                </tbody>
+            </table>
+        );
+    }
+}
+
+export default BooksList;
