@@ -4,28 +4,40 @@ import './BooksList.css';
 function BooksList() {
 
     const [books, setBooks] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        setTimeout(() => {
-            setBooks([
-                {
-                    id: 1,
-                    title: 'first book',
-                    author: 'god',
-                    isbn: '12343',
-                    rating: 5
+        (async () => {
+            try {
+                const response = await fetch('http://localhost:3001/books');
+                if (!response.ok) {
+                    throw new Error (`Request to fetch books failed with ${response.statusMessage}`);
                 }
-            ]);
-        }, 2000);
+                const data = await response.json();
+                setBooks(data);
+            } catch (error){
+                setError(error);
+            }
+        })();
     }, []);
 
-    useEffect(() => {
-        console.log('Elements in the state ', books.length);
-        console.log('Table rows: ', document.querySelectorAll('tbody tr').length);
-    });
+    // useEffect(() => {
+    //     fetch('http://localhost:3001/books')
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error(`Request to fetch books failed with ${response.statusMessage}`);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             setBooks(data);
+    //         })
+    //         .catch((error) => setError(error));
+    // },[]);
 
-
-    if (books.length === 0) {
+    if (error !== null) {
+        return <div>An error has occurred ${error.message}</div>;
+    } else if (books.length === 0) {
         return <div>No books found</div>;
     } else {
         return (
@@ -42,6 +54,7 @@ function BooksList() {
                 <tbody>
                 {books.map((book) => (
                     <tr key={book.id}>
+                        <td>{book.id}</td>
                         <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.isbn}</td>
