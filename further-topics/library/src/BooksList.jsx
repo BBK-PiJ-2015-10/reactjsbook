@@ -1,58 +1,6 @@
-import {useEffect, useState} from 'react';
-import axios from "axios";
 import './BooksList.css';
 
-
-const client = axios.create({
-    baseURL: process.env.REACT_APP_API_SERVER
-});
-
-function BooksList() {
-
-    const [books, setBooks] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await client.get(`/books`);
-                setBooks(data);
-            } catch (error){
-                setError(error);
-            }
-        })();
-    }, []);
-
-    // using default react http features
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const response = await fetch(`${process.env.REACT_APP_API_SERVER}/books`);
-    //             if (!response.ok) {
-    //                 throw new Error (`Request to fetch books failed with ${response.statusMessage}`);
-    //             }
-    //             const data = await response.json();
-    //             setBooks(data);
-    //         } catch (error){
-    //             setError(error);
-    //         }
-    //     })();
-    // }, []);
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3001/books')
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 throw new Error(`Request to fetch books failed with ${response.statusMessage}`);
-    //             }
-    //             return response.json();
-    //         })
-    //         .then((data) => {
-    //             setBooks(data);
-    //         })
-    //         .catch((error) => setError(error));
-    // },[]);
-
+function BooksList({error, books}) {
     if (error !== null) {
         return <div>An error has occurred ${error.message}</div>;
     } else if (books.length === 0) {

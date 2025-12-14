@@ -1,8 +1,6 @@
 import './App.css';
-import BooksList from "./BooksList";
-//import MyComponent from "./MyComponent";
-//import MyComponent2 from "./MyComponent2";
-//import MyTimer from "./MyComponent3";
+
+import BooksList from "./BooksList.container";
 
 function App() {
   return (
