@@ -1,29 +1,6 @@
 import {useEffect, useState} from 'react';
 import './BooksList.css';
 
-// const initialBooks = [
-//     {
-//         id: 1,
-//         title: 'first book',
-//         author: 'god',
-//         isbn: '12343',
-//         rating: 5
-//     },
-//     {
-//         id: 2,
-//         title: 'second book',
-//         isbn: '4567',
-//         rating: 4
-//     },
-//     {
-//         id: 3,
-//         title: 'third book',
-//         author: 'godana',
-//         isbn: '891011',
-//         rating: 2
-//     }
-// ];
-
 function BooksList() {
 
     const [books, setBooks] = useState([]);
@@ -39,8 +16,13 @@ function BooksList() {
                     rating: 5
                 }
             ]);
-        },2000);
-    },[]);
+        }, 2000);
+    }, []);
+
+    useEffect(() => {
+        console.log('Elements in the state ', books.length);
+        console.log('Table rows: ', document.querySelectorAll('tbody tr').length);
+    });
 
 
     if (books.length === 0) {
