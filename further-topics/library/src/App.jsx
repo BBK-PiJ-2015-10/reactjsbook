@@ -13,12 +13,13 @@ import BooksListContextConsumer from "./BooksListContextConsumer";
 //const BooksListWithBooks = withBooks(BooksList);
 
 function App() {
-
-
     return (
-        <BooksProvider>
-            <BooksListContextConsumer/>
-        </BooksProvider>
+        <>
+            <h1>Books Management</h1>
+            <BooksProvider>
+                <BooksListContextConsumer/>
+            </BooksProvider>
+        </>
     );
 
     // const [counter, setCounter] = useState(0);
