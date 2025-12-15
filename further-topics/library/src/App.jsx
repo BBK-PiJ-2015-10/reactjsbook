@@ -4,26 +4,36 @@ import './App.css';
 //import withBooks from "./withBooks";
 //import BooksList from "./BooksList";
 //import BooksLoader from "./BooksLoader";
-import {useState} from "react";
-import Context from "./Context";
-import Counter from "./Counter";
+//import {useState} from "react";
+//import Context from "./Context";
+//import Counter from "./Counter";
+import BooksProvider from "./BooksProvider";
+import BooksListContextConsumer from "./BooksListContextConsumer";
 
 //const BooksListWithBooks = withBooks(BooksList);
 
 function App() {
 
-    const [counter, setCounter] = useState(0);
-
-    function increment() {
-        setCounter((prevState) => prevState + 1);
-    }
 
     return (
-        <Context.Provider value={counter}>
-            <Counter/>
-            <button onClick={increment}>increment</button>
-        </Context.Provider>
+        <BooksProvider>
+            <BooksListContextConsumer/>
+        </BooksProvider>
     );
+
+    // const [counter, setCounter] = useState(0);
+    //
+    // function increment() {
+    //     setCounter((prevState) => prevState + 1);
+    // }
+
+
+    // return (
+    //     <Context.Provider value={counter}>
+    //         <Counter/>
+    //         <button onClick={increment}>increment</button>
+    //     </Context.Provider>
+    // );
 
 
     //return (
