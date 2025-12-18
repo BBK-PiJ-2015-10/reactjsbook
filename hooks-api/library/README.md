@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+To start book server
+
+npx json-server -p 3001 -w data.json
+
 In the project directory, you can run:
 
 ### `npm start`
