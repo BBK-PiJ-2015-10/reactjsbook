@@ -1,5 +1,22 @@
 import {useReducer} from 'react';
+import produce from 'immer';
+import {StarBorder, Star} from '@mui/icons-material';
 import './BooksList.css';
+
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'RATE':
+            return produce(state, (draftState) => {
+                const index = draftState.findIndex(
+                    (book) => book.id === action.payload.id
+                );
+                draftState[index].rating = action.payload.rating;
+            });
+        default:
+            return state;
+    }
+}
 
 const initialBooks = [
     {
@@ -7,62 +24,53 @@ const initialBooks = [
         title: 'first book',
         author: 'god',
         isbn: '12343',
-        rating: 5
-    },
-    {
-        id: 2,
-        title: 'second book',
-        isbn: '4567',
-        rating: 4
-    },
-    {
-        id: 3,
-        title: 'third book',
-        author: 'godana',
-        isbn: '891011',
-        rating: 2
+        rating: 3
     }
 ];
 
 function BooksListUsingReducer() {
 
 
+    const [books, dispatch] = useReducer(reducer, initialBooks);
 
-    const [books, setBooks] = useState(initialBooks);
-
-    function handleRate(id, rating) {
-        setBooks((prevState) => {
-            return prevState.map((book) => {
-                if (book.id === id) {
-                    book.rating = rating;
-                }
-                return book;
-            });
-        });
-    }
-
-    if (books.length === 0) {
-        return <div>No books found</div>;
-    } else {
-        return (
-            <table>
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>ISBN</th>
-                    <th>Rating</th>
+    return (
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            {books.map((book) => (
+                <tr key={book.id}>
+                    <td>{book.id}</td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.isbn}</td>
+                    <td>
+                        {new Array(5).fill('').map((item, i) => (
+                            <button
+                                className="ratingButton"
+                                key={i}
+                                onClick={() =>
+                                    dispatch({
+                                        type: 'RATE',
+                                        payload: {id: book.id, rating: i + 1}
+                                    })
+                                }>
+                                {book.rating < i + 1 ? <StarBorder/> : <Star/>}
+                            </button>
+                        ))}
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                {books.map((book) => (
-                    <BooksListItem key={book.id} book={book} onRate={handleRate}/>
-                ))}
-                </tbody>
-            </table>
-        );
-    }
+            ))}
+            </tbody>
+        </table>
+    );
 }
 
 export default BooksListUsingReducer;
