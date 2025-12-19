@@ -4,12 +4,13 @@ import './index.css';
 //import App from './App';
 //import AppUsingRef from "./AppUsingRef";
 import reportWebVitals from './reportWebVitals';
-import AppUsingRefHook from "./AppUsingRefHook";
+//import AppUsingRefHook from "./AppUsingRefHook";
+import AppUsingForwardRef from "./AppUsingForwardRef";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <AppUsingRefHook/>
+        <AppUsingForwardRef/>
     </React.StrictMode>
 );
 
