@@ -2,15 +2,15 @@
   "books": [
     {
       "id": 1,
-      "title": "Java",
+      "title": "Java for Monkeys",
       "author": "alex",
       "isbn": "12231",
       "rating": 5
     },
     {
       "id": 2,
-      "title": "Scala",
-      "author": "alex",
+      "title": "Java for Jedis",
+      "author": "tom",
       "isbn": "4567",
       "rating": 4
     },
