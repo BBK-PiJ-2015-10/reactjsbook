@@ -1,24 +1,24 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Java for Monkeys",
-      "author": "alex",
-      "isbn": "12231",
+      "id": "1",
+      "title": "Scala",
+      "author": "alexis",
+      "isbn": "122",
       "rating": 5
     },
     {
-      "id": 2,
-      "title": "Java for Jedis",
-      "author": "tom",
-      "isbn": "4567",
+      "id": "2",
+      "title": "Node.JS",
+      "author": "alexis",
+      "isbn": "345",
       "rating": 4
     },
     {
-      "id": 3,
-      "title": "Node Js",
-      "author": "alex",
-      "isbn": "891011",
+      "id": "3",
+      "title": "Java",
+      "author": "alexis",
+      "isbn": "678",
       "rating": 3
     }
   ]
