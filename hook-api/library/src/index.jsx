@@ -9,12 +9,14 @@ import reportWebVitals from './reportWebVitals';
 //import AppUsingImperative from "./AppUsingImperative";
 //import AppUsingDebugValue from "./AppUsingDebugValue";
 //import AppWithBookListSearch from "./AppWithBookListSearch";
-import AppUsingTransition from "./AppUsingTransition";
+//import AppUsingTransition from "./AppUsingTransition";
+//import AppUseId from "./AppUseId";
+import AppUsingCounter from "./AppUsingCounter";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <AppUsingTransition/>
+        <AppUsingCounter/>
     </React.StrictMode>
 );
 
