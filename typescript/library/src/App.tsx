@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
 import BooksList from "./BooksList";
+import BooksProvider from "./BooksProvider";
 
 const App: React.FC = () => {
     return (
-        <BooksList/>
+        <BooksProvider>
+            <BooksList/>
+        </BooksProvider>
     )
+    //return (
+    //  <BooksList/>
+    //)
     //let name: string = 'World';
     //name = 42;
     //return (
