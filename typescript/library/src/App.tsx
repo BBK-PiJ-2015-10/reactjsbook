@@ -1,14 +1,18 @@
 import React from 'react';
 import './App.css';
-import BooksList from "./BooksList";
-import BooksProvider from "./BooksProvider";
+//import BooksList from "./BooksList";
+//import BooksProvider from "./BooksProvider";
+import Counter from "./Counter";
 
 const App: React.FC = () => {
     return (
-        <BooksProvider>
-            <BooksList/>
-        </BooksProvider>
+        <Counter start={0}/>
     )
+    // return (
+    //     <BooksProvider>
+    //         <BooksList/>
+    //     </BooksProvider>
+    // )
     //return (
     //  <BooksList/>
     //)
