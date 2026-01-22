@@ -11,6 +11,10 @@ table.BooksList {
     background-color: #ddd;
 }
 
+.BooksList tr.Highlight {
+    background-color: yellow;
+}
+
 .BooksList td {
     padding: 5px 10px;
 }

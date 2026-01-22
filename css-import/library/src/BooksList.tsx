@@ -22,7 +22,7 @@ const books: Book[] = [
         "title": "Node Js",
         "author": "alex",
         "isbn": "891011",
-        "rating": 3
+        "rating": 5
     }
 ];
 
@@ -38,16 +38,22 @@ const BooksList: React.FC = () => {
             </tr>
             </thead>
             <tbody>
-            {books.map((book) => (
-                <tr key={book.id}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.isbn}</td>
-                    <td>{book.rating && <span>
+            {books.map((book) => {
+                const classNames = [];
+                if (book.rating === 5) {
+                    classNames.push('Highlight');
+                }
+                return (
+                    <tr key={book.id} className={classNames.join(' ')}>
+                        <td>{book.title}</td>
+                        <td>{book.author}</td>
+                        <td>{book.isbn}</td>
+                        <td>{book.rating && <span>
                         {'*'.repeat(book.rating)}
                     </span>}</td>
-                </tr>
-            ))}
+                    </tr>
+                );
+            })}
             </tbody>
         </table>
     )
