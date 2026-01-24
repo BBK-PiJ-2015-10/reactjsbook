@@ -22,7 +22,7 @@ const booksQuery = gql`
 const List: React.FC = () => {
 
     const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
-    
+
     if (loading) return <p>Loading...</p>;
     if (error) {
         console.error('GraphQL Error:', error);
