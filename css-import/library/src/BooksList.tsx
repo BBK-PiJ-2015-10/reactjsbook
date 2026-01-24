@@ -1,6 +1,7 @@
 import React from "react";
 import Book from "./Book";
-import './BooksList.css';
+import './BooksList.scss';
+import classnames from 'classnames';
 
 const books: Book[] = [
     {
@@ -39,12 +40,9 @@ const BooksList: React.FC = () => {
             </thead>
             <tbody>
             {books.map((book) => {
-                const classNames = [];
-                if (book.rating === 5) {
-                    classNames.push('Highlight');
-                }
+                const classes = classnames({Highlight: book.rating === 5});
                 return (
-                    <tr key={book.id} className={classNames.join(' ')}>
+                    <tr key={book.id} className={classes}>
                         <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.isbn}</td>
