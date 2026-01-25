@@ -9,15 +9,15 @@ type Book = {
     isbn: string
 }
 
-const booksQuery = gql`
-    query BooksList {
-        book {
-            id
-            title
-            isbn
-        }
-    }
-`;
+// const booksQuery = gql`
+//     query BooksList {
+//         book {
+//             id
+//             title
+//             isbn
+//         }
+//     }
+// `;
 
 const List: React.FC = () => {
 
