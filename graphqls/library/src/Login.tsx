@@ -1,6 +1,6 @@
 import {useReactiveVar} from "@apollo/client";
 import React, {ChangeEvent, FormEvent, useState} from "react";
-import {token} from "./apolloClient";
+import apolloClient, {token} from "./apolloClient";
 
 const Login: React.FC = () => {
 
@@ -31,11 +31,12 @@ const Login: React.FC = () => {
                 body: JSON.stringify(credentials)
             })
         const data = await response.text();
+        apolloClient.resetStore();
         token(data);
     };
 
     if (serverToken !== '') {
-        return <div>No server token</div>
+        return <div></div>
     }
 
     return (

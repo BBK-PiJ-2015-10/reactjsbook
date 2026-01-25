@@ -1,5 +1,3 @@
-import {useQuery} from "@apollo/client/react";
-import {gql} from "@apollo/client";
 import {useBooksListQuery, useDeleteBookMutation} from "./graphql/generated";
 import React from "react";
 import {useReactiveVar} from "@apollo/client";
@@ -11,34 +9,19 @@ type Book = {
     isbn: string
 }
 
-// const booksQuery = gql`
-//     query BooksList {
-//         book {
-//             id
-//             title
-//             isbn
-//         }
-//     }
-// `;
-
 const List: React.FC = () => {
 
     // const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
 
     const serverToken = useReactiveVar(token);
-
-    if (!serverToken) {
-        return (<div>Need to fetch a token</div>);
-    }
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const {data, loading, error} = useBooksListQuery();
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [deleteBook] = useDeleteBookMutation(
         {refetchQueries: ['BooksList']}
     );
 
+    if (!serverToken) {
+        return <></>;
+    }
     if (loading) {
         return (
             <div>
