@@ -9,3 +9,11 @@ gql`
         }
     }
 `;
+
+gql`
+    mutation deleteBook($id: ID!){
+        deleteBook(id: $id){
+            id
+        }
+    }
+`;

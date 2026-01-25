@@ -1,6 +1,6 @@
 import {useQuery} from "@apollo/client/react";
 import {gql} from "@apollo/client";
-import { useBooksListQuery } from "./graphql/generated";
+import { useBooksListQuery, useDeleteBookMutation } from "./graphql/generated";
 import React from "react";
 
 type Book = {
