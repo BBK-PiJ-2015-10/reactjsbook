@@ -1,6 +1,6 @@
 import {useQuery} from "@apollo/client/react";
 import {gql} from "@apollo/client";
-import { useBooksListQuery, useDeleteBookMutation } from "./graphql/generated";
+import {useBooksListQuery, useDeleteBookMutation} from "./graphql/generated";
 import React from "react";
 
 type Book = {
@@ -21,9 +21,13 @@ type Book = {
 
 const List: React.FC = () => {
 
-   // const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
+    // const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
 
     const {data, loading, error} = useBooksListQuery();
+
+    const [deleteBook] = useDeleteBookMutation(
+        {refetchQueries: ['BooksList']}
+    );
 
     if (loading) {
         return (
@@ -49,13 +53,21 @@ const List: React.FC = () => {
             <tr>
                 <th>Title</th>
                 <th>ISBN</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            {data?.book?.map((book) => book &&(
+            {data?.book?.map((book) => book && (
                     <tr key={book.id}>
                         <td>{book.title}</td>
                         <td>{book.isbn}</td>
+                        <td>
+                            <button onClick={() => deleteBook(
+                                {variables: {id: book.id}}
+                            )}>
+                                Delete
+                            </button>
+                        </td>
                     </tr>
                 )
             )}
