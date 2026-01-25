@@ -9,7 +9,7 @@ type Book = {
 }
 
 const booksQuery = gql`
-    query {
+    query BooksList {
         book {
             id
             title
