@@ -1,5 +1,6 @@
 import {useQuery} from "@apollo/client/react";
 import {gql} from "@apollo/client";
+import { useBooksListQuery } from "./graphql/generated";
 import React from "react";
 
 type Book = {
@@ -20,7 +21,9 @@ const booksQuery = gql`
 
 const List: React.FC = () => {
 
-    const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
+   // const {data, loading, error} = useQuery<{ book: Book[] }>(booksQuery);
+
+    const {data, loading, error} = useBooksListQuery();
 
     if (loading) {
         return (
@@ -49,7 +52,7 @@ const List: React.FC = () => {
             </tr>
             </thead>
             <tbody>
-            {data?.book.map((book) => (
+            {data?.book?.map((book) => book &&(
                     <tr key={book.id}>
                         <td>{book.title}</td>
                         <td>{book.isbn}</td>
