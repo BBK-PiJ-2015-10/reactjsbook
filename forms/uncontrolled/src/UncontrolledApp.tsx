@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import './App.css';
 
-const App: React.FC = () => {
+const UncontrolledApp: React.FC = () => {
         const inputRef = useRef<HTMLInputElement>(null);
 
         function handleClick() {
@@ -39,4 +39,4 @@ const App: React.FC = () => {
 //   );
 // }
 
-export default App;
+export default UncontrolledApp;
