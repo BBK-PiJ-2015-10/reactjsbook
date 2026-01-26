@@ -14,7 +14,7 @@ const Login: React.FC<Props> = ({onLogin}) => {
 
     useEffect(() => {
         userNameRef.current!.focus();
-    })
+    },[])
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
