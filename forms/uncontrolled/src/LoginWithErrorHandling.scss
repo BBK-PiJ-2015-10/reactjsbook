@@ -1,0 +1,24 @@
+.Login {
+  width: 400px;
+  height: 200px;
+  margin: 50px auto;
+  border: 1px solid black;
+  box-shadow: 0 0 5px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 20px;
+  label {
+    width: 400px;
+    position: relative;
+    display: inline-block;
+  }
+  input {
+    position: absolute;
+    left: 120px;
+  }
+  .error {
+    color: red;
+  }
+}

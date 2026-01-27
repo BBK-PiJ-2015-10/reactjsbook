@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 //import UncontrolledApp from "./UncontrolledApp";
 import ControlledApp from "./ControlledApp";
+import App from "./App";
 //import Login from "./Login";
 
 const root = ReactDOM.createRoot(
@@ -11,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <ControlledApp/>
+        <App/>
     </React.StrictMode>
 );
 

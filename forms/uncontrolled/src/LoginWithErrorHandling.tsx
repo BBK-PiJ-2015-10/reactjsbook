@@ -1,4 +1,5 @@
 import React, {FormEvent, useEffect, useRef, useState} from "react";
+import './LoginWithErrorHandling.scss';
 
 type Props = {
     onLogin: (username: string, password: string) => void,
@@ -29,9 +30,9 @@ const LoginWithErrorHandling: React.FC<Props> = ({onLogin, loginError}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {loginError && <div data-testid="loginError">{loginError}</div>}
-            {validationError && (<div data-testid="validationError">{validationError}</div>)}
+        <form onSubmit={handleSubmit} className="Login">
+            {loginError && <div data-testid="loginError" className="error">{loginError}</div>}
+            {validationError && (<div data-testid="validationError" className="error">{validationError}</div>)}
             <div>
                 <label>
                     Username:
