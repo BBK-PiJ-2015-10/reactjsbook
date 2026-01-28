@@ -12,20 +12,49 @@ const server = express();
 
 server.use(fileUpload());
 
-server.use(cors());
 server.use(express.urlencoded({extended: true}));
+server.use(cors());
 
 server.get('/health', (req, res) => {
     console.log('Something called health check');
     res.send("Health is ok");
 })
 
-server.use('/books', (req, Response, next) => {
-    if (req.methods === 'GET') {
+
+server.put('/books', (req, resp, next) => {
+    if (req.files.image) {
+        const file = req.files.image;
+        const name = req.body.title.replace(' ', '_');
+        const image = `${name}.png`;
+        file.mv(`${__dirname}/../public/${image}`);
         console.log("WAKE UP");
+        resp.body.image;
+    } else {
+        console.log("CAT")
     }
     next();
 });
+
+server.post('/books', (req, resp, next) => {
+    if (req.files.image) {
+        const file = req.files.image;
+        const name = req.body.title.replace(' ', '_');
+        const image = `${name}.png`;
+        file.mv(`${__dirname}/../public/${image}`);
+        console.log("WAKE UP");
+        resp.body.image;
+    } else {
+        console.log("CAT")
+    }
+    next();
+});
+
+
+server.get('/books', (req, res) => {
+    console.log('Something called health check');
+    res.send("Health is ok");
+});
+
 
 server.listen(3001, () => {
     console.log(`Starting server listening on port 3001`);
