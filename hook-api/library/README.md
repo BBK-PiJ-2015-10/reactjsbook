@@ -12,11 +12,13 @@ npm run server
 
 This will start the json-server on port 3001. The server will automatically restart whenever you modify the `data.json` file.
 
-Alternatively, you can run the server without auto-restart:
+Alternatively, you can run the server manually (without nodemon):
 
 ```bash
-npx json-server -p 3001 -w data.json
+npx json-server -p 3001 data.json
 ```
+
+Note: json-server has built-in file watching, so it will still reload data when data.json changes, but without nodemon, other types of changes won't trigger a full restart.
 
 ## Available Scripts
 

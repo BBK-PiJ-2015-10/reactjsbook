@@ -20,10 +20,12 @@ This command will:
 - Watch for changes to `data.json`
 - Automatically restart the server when files are modified
 
-**Alternative (manual restart):**
+**Alternative (manual):**
 ```bash
-npx json-server -p 3001 -w data.json
+npx json-server -p 3001 data.json
 ```
+
+Note: json-server has built-in file watching, so data reloads when data.json changes, but nodemon provides more comprehensive restart capabilities.
 
 ### Projects with Auto-Restart
 - **hook-api/library** - React app + json-server backend
