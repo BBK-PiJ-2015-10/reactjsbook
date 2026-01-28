@@ -50,10 +50,10 @@ const Form: React.FC<Props> = ({onSave, book: inputBook}) => {
             <div>
                 <label htmlFor="isbn">ISBN:</label>
                 <input type="text" id="isbn" name="isbn" value={book.isbn} onChange={handleChange}
-                       data-test-id="isbn"/>
+                       data-testid="isbn"/>
             </div>
             <div>
-                <button type="submit" data-test-id="submit">
+                <button type="submit" data-testid="submit">
                     save
                 </button>
             </div>
