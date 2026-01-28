@@ -6,7 +6,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### Backend API Server
+
+To start the json-server backend with auto-restart on file changes:
+
+```bash
+npm run server
+```
+
+This will start the json-server on port 3001. The server will automatically restart whenever you modify the `data.json` file.
+
+Alternatively, you can run the server without auto-restart:
+
+```bash
 npx json-server -p 3001 -w data.json
+```
 
 ### `npm start`
 

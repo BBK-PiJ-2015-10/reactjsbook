@@ -2,9 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To start 
+## Running the Backend API Server
 
+To start the json-server backend with auto-restart on file changes:
+
+```bash
+npm run server
+```
+
+This will start the json-server on port 3001. The server will automatically restart whenever you modify the `data.json` file.
+
+Alternatively, you can run the server without auto-restart:
+
+```bash
 npx json-server -p 3001 -w data.json
+```
 
 ## Available Scripts
 
@@ -17,6 +29,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### `npm run server`
+
+Runs the json-server backend API on port 3001 with auto-restart enabled.\
+The server will automatically restart whenever you modify the `data.json` file.
+
+This uses nodemon to watch for file changes and restart the server automatically.
 
 ### `npm test`
 

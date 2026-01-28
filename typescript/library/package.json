@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "nodemon --watch data.json --exec 'npx json-server -p 3001 -w data.json'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
-    "json-server": "^1.0.0-beta.3"
+    "json-server": "^1.0.0-beta.3",
+    "nodemon": "^3.1.11"
   }
 }
