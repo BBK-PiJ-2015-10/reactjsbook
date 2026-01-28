@@ -7,12 +7,13 @@ const book = {
     id: 1,
     title: 'Java script - The comprehensive guide',
     author: 'Philip Ackermann',
+    isbn: '4588-3423',
     rating: 5
 }
 
 const App: React.FC = () => {
     return (
-        <Form onSave={(book) => console.log(`Saving the book from ${book.author}`)}/>
+        <Form onSave={(book) => console.log(`Saving the book from ${book.author}`)} book={book}/>
     );
 
 };
