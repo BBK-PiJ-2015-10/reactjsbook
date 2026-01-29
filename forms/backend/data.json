@@ -20,6 +20,11 @@
       "author": "alexis",
       "isbn": "678",
       "rating": 3
+    },
+    {
+      "title": "akka",
+      "image": "akka.png",
+      "id": "uIrefkT"
     }
   ]
 }
