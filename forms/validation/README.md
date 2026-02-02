@@ -10,6 +10,10 @@ npm install react-hook-form
 
 npm install -D sass
 
+### For schema validation
+
+npm install @hookform/resolvers yup
+
 
 ## Available Scripts
 

@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {useForm} from "react-hook-form";
 import {InputBook, Book} from "./Book";
-import './Form.scss'
 
 type Props = {
     onSave: (book: InputBook) => void;
