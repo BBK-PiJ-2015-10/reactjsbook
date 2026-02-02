@@ -11,7 +11,7 @@ const App: React.FC = () => {
                 <Form onSave={(book: InputBook) => console.log(`Saving on secondForm ${book}`)}
                       book={{
                           id: 1,
-                          title: 'JavaScript - The Comprehensive Guide',
+                          title: 'JavaScript',
                           author: 'Philip Ackermann',
                           isbn: '978-3836286299',
                       }}

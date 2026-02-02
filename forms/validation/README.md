@@ -8,6 +8,8 @@ npx create-react-app validation --template typescript
 
 npm install react-hook-form
 
+npm install -D sass
+
 
 ## Available Scripts
 
