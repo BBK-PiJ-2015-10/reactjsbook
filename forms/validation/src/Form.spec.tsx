@@ -1,31 +1,50 @@
-import { fireEvent, screen, act} from "@testing-library/react";
-import { render} from "@testing-library/react";
+import {fireEvent, screen, act} from "@testing-library/react";
+import {render} from "@testing-library/react";
 //import FormWithSchemaValidation from "./FormWithSchemaValidation";
 import Form from "./Form";
+import FormWithSchemaValidation from "./FormWithSchemaValidation";
 
 
-describe('Form with Schema Validation',() => {
+describe('Form with Schema Validation', () => {
     it('should submit a form successfully', async () => {
         const onSave = jest.fn();
-        render(<Form onSave={onSave}/>)
-        fireEvent.change(screen.getByTestId('title'),{
-            target: { value: 'Design Patterns'}
+        render(<FormWithSchemaValidation onSave={onSave}/>)
+        fireEvent.change(screen.getByTestId('title'), {
+            target: {value: 'Design Patterns'}
         })
-        fireEvent.change(screen.getByTestId('author'),{
-            target: { value : 'Eric Gamma'}
+        fireEvent.change(screen.getByTestId('author'), {
+            target: {value: 'Eric Gamma'}
         });
-        fireEvent.change(screen.getByTestId('isbn'),{
-           target: { value: '978-0201633610'}
+        fireEvent.change(screen.getByTestId('isbn'), {
+            target: {value: '978-0201633610'}
         });
         await act(() => {
             fireEvent.click(screen.getByTestId('submit'));
         })
         expect(onSave).toHaveBeenCalledWith({
-            "title": 'Design Patterns',
-            "author": 'Eric Gamma',
-            "isbn": '978-0201633610'
-        },expect.anything()
+                "title": 'Design Patterns',
+                "author": 'Eric Gamma',
+                "isbn": '978-0201633610'
+            }, expect.anything()
         );
+    });
+    it('should fail if input is not valid', async () => {
+        const onSave = jest.fn();
+        render(<FormWithSchemaValidation onSave={onSave}/>)
+        fireEvent.change(screen.getByTestId('title'), {
+            target: {value: 'Design Patterns'}
+        });
+        await act(() => fireEvent.click(screen.getByTestId('submit')));
+        ///const titleError = screen.getByTestId('titleError');
+        const authorError = screen.getByTestId('authorError');
+        const isbnError = screen.getByTestId('isbnError');
+
+        expect(onSave).not.toHaveBeenCalled();
+        //expect(titleError).not.toBeInTheDocument();
+        expect(authorError).toHaveTextContent("The author is a required field");
+        expect(isbnError).toHaveTextContent("The ISBN is a required field");
+
+
     });
 });
 

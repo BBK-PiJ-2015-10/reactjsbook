@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8672bc8f-0fb3-49b3-9bc9-c731a6eb0bdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form.spec.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form.spec.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form.spec.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Jest.Form with Schema Validation.executor": "Run",
+    "Jest.Form with Schema Validation.should fail if input is not valid.executor": "Run",
+    "Jest.Form with Schema Validation.should submit a form successfully.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -89,6 +90,32 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="Form with Schema Validation.should fail if input is not valid" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Form.spec.tsx" />
+      <test-names>
+        <test-name value="Form with Schema Validation" />
+        <test-name value="should fail if input is not valid" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Form with Schema Validation.should submit a form successfully" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Form.spec.tsx" />
+      <test-names>
+        <test-name value="Form with Schema Validation" />
+        <test-name value="should submit a form successfully" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -102,6 +129,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Jest.Form with Schema Validation" />
+        <item itemvalue="Jest.Form with Schema Validation.should fail if input is not valid" />
+        <item itemvalue="Jest.Form with Schema Validation.should submit a form successfully" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -124,7 +153,7 @@
       <workItem from="1769785829663" duration="1904000" />
       <workItem from="1769983057510" duration="742000" />
       <workItem from="1770031293867" duration="4253000" />
-      <workItem from="1770122028293" duration="911000" />
+      <workItem from="1770122028293" duration="2453000" />
     </task>
     <servers />
   </component>
