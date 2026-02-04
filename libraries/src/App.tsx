@@ -1,26 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from './List';
+import {Book} from './Book';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [books, setBooks] = useState<Book[]>([])
+
+    useEffect(() => {
+        fetch('http://localhost:3001/books')
+            .then((response) => response.json())
+            .then((data) => setBooks(data))
+    }, []);
+
+    return (
+        <List books={books}/>
+    );
 }
 
 export default App;

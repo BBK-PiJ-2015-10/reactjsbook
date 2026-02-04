@@ -2,6 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## To re-create project
+
+npx create-react-app libraries --template typescript
+
+npm install @mui/material @emotion/react @emotion/styled
+npm install @fontsource/roboto
+npm install @mui/icons-material
+
+For the backend
+
+npm install json-server 
+
+run with npm json-server -p 3001 -w data.json
+
 ## Available Scripts
 
 In the project directory, you can run:
