@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8672bc8f-0fb3-49b3-9bc9-c731a6eb0bdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/libraries.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/src/Book.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../libraries/src/List.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../libraries/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../libraries/src/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/src/List.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
