@@ -40,7 +40,7 @@ const List: React.FC<Props> = ({books}) => {
                 <TableHead>
                     <TableRow>
                         {Object.entries(headers).map(([key, header]) => (
-                            <TableCell>
+                            <TableCell key={key}>
                                 <TableSortLabel
                                     active={sort.orderBy === key}
                                     direction={sort.order}
@@ -64,7 +64,7 @@ const List: React.FC<Props> = ({books}) => {
                             const compareResult = a[sort.orderBy]
                                 .toString()
                                 .localeCompare(b[sort.orderBy].toString());
-                            return sort.order === 'asc' ? compareResult : -compareResult
+                            return sort.order === 'asc' ? compareResult : -compareResult;
                         })
                         .map((book) => (
                             <TableRow key={book.id}>
