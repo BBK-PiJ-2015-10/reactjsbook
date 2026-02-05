@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import {
-    Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField
+    Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField,
+    TableSortLabel
 } from "@mui/material";
 import {StarBorder, Star} from '@mui/icons-material';
 import {Book} from './Book'
@@ -9,9 +10,25 @@ type Props = {
     books: Book[]
 }
 
+const headers = {
+    title: 'Title',
+    author: 'Author',
+    isbn: 'ISBN',
+    MuiRating: 'Rating'
+};
+
+
 const List: React.FC<Props> = ({books}) => {
 
     const [filter, setFilter] = useState('');
+    const [sort, setSort] = useState<{
+        orderBy: keyof Book;
+        order: 'asc' | 'desc';
+    }>({
+        orderBy: 'title',
+        order: 'asc'
+
+    });
 
     return (
         <Paper>
@@ -22,16 +39,33 @@ const List: React.FC<Props> = ({books}) => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Author</TableCell>
-                        <TableCell>ISBN</TableCell>
-                        <TableCell>Rating</TableCell>
+                        {Object.entries(headers).map(([key, header]) => (
+                            <TableCell>
+                                <TableSortLabel
+                                    active={sort.orderBy === key}
+                                    direction={sort.order}
+                                    onClick={() => setSort({
+                                        orderBy: key as keyof Book,
+                                        order: sort.order === 'asc' ? 'desc' : 'asc'
+                                    })
+                                    }
+                                >
+                                    {header}
+                                </TableSortLabel>
+                            </TableCell>
+                        ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {books
                         .filter((book) =>
                             book.title.toLowerCase().includes(filter.toLowerCase()))
+                        .sort((a, b) => {
+                            const compareResult = a[sort.orderBy]
+                                .toString()
+                                .localeCompare(b[sort.orderBy].toString());
+                            return sort.order === 'asc' ? compareResult : -compareResult
+                        })
                         .map((book) => (
                             <TableRow key={book.id}>
                                 <TableCell>{book.title}</TableCell>
