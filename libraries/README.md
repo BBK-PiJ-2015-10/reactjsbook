@@ -10,6 +10,14 @@ npm install @mui/material @emotion/react @emotion/styled
 npm install @fontsource/roboto
 npm install @mui/icons-material
 
+for schema validation
+
+npm install @hookform/resolvers yup
+
+to use react from
+
+npm install react-hook-form
+
 For the backend
 
 npm install json-server 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import List from './List';
-import {Book} from './Book';
+import {Book, InputBook} from './Book';
 
 function App() {
 
@@ -28,11 +28,7 @@ function App() {
         );
     }
 
-    return (
-        <List books={books} onDelete={handleDelete}/>
-    );
-
-    async function handleSave(book: Book) {
+    async function handleSave(book: InputBook) {
         const request = await fetch('http://localhost:3001/books', {
             method: 'POST',
             body: JSON.stringify(book),
@@ -41,6 +37,12 @@ function App() {
         const savedBook = await request.json();
         setBooks((prevBooks) => [...prevBooks, savedBook]);
     }
+
+    return (
+        <List books={books} onDelete={handleDelete} onSave={handleSave}/>
+    );
+
+
 }
 
 export default App;

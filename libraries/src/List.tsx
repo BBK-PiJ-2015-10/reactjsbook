@@ -3,13 +3,16 @@ import {
     Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField,
     TableSortLabel, Grid, IconButton
 } from "@mui/material";
-import {StarBorder, Star, Delete} from '@mui/icons-material';
-import {Book} from './Book'
+import {StarBorder, Star, Delete, Add} from '@mui/icons-material';
+import {Book, InputBook} from './Book'
 import ConfirmDialog from "./ConfirmDialog";
+import Form from './Form'
+import {Fab} from "./List.style";
 
 type Props = {
     books: Book[];
-    onDelete: (book: Book) => void
+    onDelete: (book: Book) => void;
+    onSave: (book: InputBook) => void
 }
 
 const headers = {
@@ -20,7 +23,7 @@ const headers = {
 };
 
 
-const List: React.FC<Props> = ({books, onDelete}) => {
+const List: React.FC<Props> = ({books, onDelete, onSave}) => {
 
     const [filter, setFilter] = useState('');
     const [sort, setSort] = useState<{
@@ -35,6 +38,8 @@ const List: React.FC<Props> = ({books, onDelete}) => {
         open: boolean;
         book: Book | null;
     }>({open: false, book: null});
+
+    const [formDialog, setFormDialog] = useState<boolean>(false);
 
     return (
         <Grid container>
@@ -118,6 +123,17 @@ const List: React.FC<Props> = ({books, onDelete}) => {
                                });
                            }}
             />
+            <Form
+                onSave={(book: InputBook) => {
+                    setFormDialog(false);
+                    onSave(book);
+                }} open={formDialog} onClose={() => setFormDialog(false)}
+            />
+            <Fab color="primary" aria-label="Add" onClick={() => {
+                setFormDialog(true);
+            }}>
+                <Add/>
+            </Fab>
         </Grid>
     );
 };
