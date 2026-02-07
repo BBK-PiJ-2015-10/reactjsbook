@@ -31,6 +31,16 @@ function App() {
     return (
         <List books={books} onDelete={handleDelete}/>
     );
+
+    async function handleSave(book: Book) {
+        const request = await fetch('http://localhost:3001/books', {
+            method: 'POST',
+            body: JSON.stringify(book),
+            headers: {'content-type': 'application/json'}
+        })
+        const savedBook = await request.json();
+        setBooks((prevBooks) => [...prevBooks, savedBook]);
+    }
 }
 
 export default App;
