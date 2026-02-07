@@ -15,7 +15,7 @@ import {Book, InputBook} from "./Book";
 interface Props {
     open: boolean;
     book?: InputBook;
-    onSave: (Book: InputBook) => void;
+    onSave: (book: InputBook) => void;
     onClose: () => void;
 }
 
@@ -62,12 +62,11 @@ const Form: React.FC<Props> = ({
                     <Button color="secondary" onClick={onClose}>
                         Cancel
                     </Button>
-                    <Button color="primary">
+                    <Button color="primary" type="submit">
                         Saving
                     </Button>
                 </DialogActions>
             </form>
-
         </Dialog>
     )
 

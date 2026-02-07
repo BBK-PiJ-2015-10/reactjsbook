@@ -13,6 +13,12 @@
       "author": "Yasser Alejandro Palacios",
       "isbn": "1789",
       "rating": 5
+    },
+    {
+      "title": "Java 25",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "4533",
+      "id": 3
     }
   ]
 }

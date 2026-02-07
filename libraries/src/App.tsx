@@ -29,6 +29,7 @@ function App() {
     }
 
     async function handleSave(book: InputBook) {
+        console.log('Triggering a save')
         const request = await fetch('http://localhost:3001/books', {
             method: 'POST',
             body: JSON.stringify(book),
