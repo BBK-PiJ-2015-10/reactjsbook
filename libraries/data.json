@@ -1,13 +1,6 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "JavaScript - The Comprehensive Guide",
-      "author": "Philip Ackermann",
-      "isbn": "123",
-      "rating": 5
-    },
-    {
       "id": 2,
       "title": "Clean Code",
       "author": "Robert Martin",

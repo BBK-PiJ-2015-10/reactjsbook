@@ -1,13 +1,14 @@
 import React, {ChangeEvent, useState} from 'react';
 import {
     Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField,
-    TableSortLabel, Grid
+    TableSortLabel, Grid, IconButton
 } from "@mui/material";
-import {StarBorder, Star} from '@mui/icons-material';
+import {StarBorder, Star, Delete} from '@mui/icons-material';
 import {Book} from './Book'
 
 type Props = {
-    books: Book[]
+    books: Book[];
+    onDelete: (book: Book) => void
 }
 
 const headers = {
@@ -18,7 +19,7 @@ const headers = {
 };
 
 
-const List: React.FC<Props> = ({books}) => {
+const List: React.FC<Props> = ({books, onDelete}) => {
 
     const [filter, setFilter] = useState('');
     const [sort, setSort] = useState<{
@@ -83,6 +84,13 @@ const List: React.FC<Props> = ({books}) => {
                                                     ) : (<Star key={index}/>
                                                     )
                                                 )}
+                                        </TableCell>
+                                        <TableCell>
+                                            <IconButton color="primary" aria-label="delete book" onClick={
+                                                () => onDelete(book)
+                                            }>
+                                                <Delete/>
+                                            </IconButton>
                                         </TableCell>
                                     </TableRow>
                                 ))}

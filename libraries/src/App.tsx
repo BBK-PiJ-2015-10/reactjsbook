@@ -14,8 +14,22 @@ function App() {
             .then((data) => setBooks(data))
     }, []);
 
+    async function handleDelete(book: Book) {
+        fetch(`http://localhost:3001/books/${book.id}`,
+            {method: 'DELETE'}
+        ).then(
+            (response) => {
+                if (response.ok) {
+                    setBooks((prevBooks) =>
+                        prevBooks.filter((prevBooks) => prevBooks.id !== book.id)
+                    );
+                }
+            }
+        );
+    }
+
     return (
-        <List books={books}/>
+        <List books={books} onDelete={handleDelete}/>
     );
 }
 
