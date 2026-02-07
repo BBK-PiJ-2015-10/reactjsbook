@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8672bc8f-0fb3-49b3-9bc9-c731a6eb0bdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../libraries/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../libraries/src/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../libraries/src/Form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

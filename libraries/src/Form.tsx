@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import * as yup from 'yup';
+//import * as yup from 'yup';
 import validationSchema from "./ValidationSchema";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {
@@ -10,7 +10,7 @@ import {
     TextField, Button
 } from "@mui/material";
 import {useForm} from "react-hook-form";
-import {Book, InputBook} from "./Book";
+import {InputBook} from "./Book";
 
 interface Props {
     open: boolean;
