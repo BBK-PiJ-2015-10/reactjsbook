@@ -19,7 +19,7 @@ const headers = {
     title: 'Title',
     author: 'Author',
     isbn: 'ISBN',
-    MuiRating: 'Rating'
+    rating: 'Rating'
 };
 
 
@@ -32,7 +32,6 @@ const List: React.FC<Props> = ({books, onDelete, onSave}) => {
     }>({
         orderBy: 'title',
         order: 'asc'
-
     });
     const [deleteDialog, setDeleteDialog] = useState<{
         open: boolean;

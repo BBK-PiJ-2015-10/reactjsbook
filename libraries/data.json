@@ -1,24 +1,16 @@
 {
   "books": [
     {
-      "id": 2,
-      "title": "Clean Code",
-      "author": "Robert Martin",
-      "isbn": "456",
-      "rating": 4
-    },
-    {
-      "id": 2,
-      "title": "Scala for Jedis",
-      "author": "Yasser Alejandro Palacios",
-      "isbn": "1789",
-      "rating": 5
-    },
-    {
       "title": "Java 25",
       "author": "Yasser Alejandro Palacios",
       "isbn": "4533",
       "id": 3
+    },
+    {
+      "title": "dfds",
+      "author": "biruta",
+      "isbn": "99",
+      "id": 4
     }
   ]
 }
