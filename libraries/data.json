@@ -13,13 +13,6 @@
       "author": "Yasser Alejandro Palacios",
       "isbn": "1789",
       "rating": 5
-    },
-    {
-      "id": 3,
-      "title": "Design Patterns",
-      "author": "Erich Gamma",
-      "isbn": "789",
-      "rating": 3
     }
   ]
 }

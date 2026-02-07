@@ -5,6 +5,7 @@ import {
 } from "@mui/material";
 import {StarBorder, Star, Delete} from '@mui/icons-material';
 import {Book} from './Book'
+import ConfirmDialog from "./ConfirmDialog";
 
 type Props = {
     books: Book[];
@@ -91,7 +92,9 @@ const List: React.FC<Props> = ({books, onDelete}) => {
                                         </TableCell>
                                         <TableCell>
                                             <IconButton color="primary" aria-label="delete book" onClick={
-                                                () => onDelete(book)
+                                                () => {
+                                                    setDeleteDialog({open: true, book: book})
+                                                }
                                             }>
                                                 <Delete/>
                                             </IconButton>
@@ -103,6 +106,18 @@ const List: React.FC<Props> = ({books, onDelete}) => {
                 </Paper>
             </Grid>
             <Grid size={{md: 1}} sx={{display: {sm: 'none', md: 'block'}}}/>
+            <ConfirmDialog title="Really delete?" open={deleteDialog.open}
+                           text="Are you sure you want to delete"
+                           onConfirm={(confirmation) => {
+                               if (confirmation && deleteDialog.book) {
+                                   onDelete(deleteDialog.book);
+                               }
+                               setDeleteDialog({
+                                   open: false,
+                                   book: null
+                               });
+                           }}
+            />
         </Grid>
     );
 };
