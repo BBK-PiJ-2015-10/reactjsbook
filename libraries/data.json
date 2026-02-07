@@ -8,6 +8,13 @@
       "rating": 4
     },
     {
+      "id": 2,
+      "title": "Scala for Jedis",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "1789",
+      "rating": 5
+    },
+    {
       "id": 3,
       "title": "Design Patterns",
       "author": "Erich Gamma",

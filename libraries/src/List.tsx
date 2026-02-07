@@ -30,6 +30,10 @@ const List: React.FC<Props> = ({books, onDelete}) => {
         order: 'asc'
 
     });
+    const [deleteDialog, setDeleteDialog] = useState<{
+        open: boolean;
+        book: Book | null;
+    }>({open: false, book: null});
 
     return (
         <Grid container>
