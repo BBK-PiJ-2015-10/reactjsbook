@@ -63,7 +63,7 @@ const Form: React.FC<Props> = ({
                         Cancel
                     </Button>
                     <Button color="primary" type="submit">
-                        Saving
+                        Save
                     </Button>
                 </DialogActions>
             </form>

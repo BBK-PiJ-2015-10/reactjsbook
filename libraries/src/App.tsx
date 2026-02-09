@@ -29,14 +29,31 @@ function App() {
     }
 
     async function handleSave(book: InputBook) {
+        let url = 'http://localhost:3001/books'
+        let method = 'POST'
+        if (book.id) {
+            url = url + `/${book.id}`;
+            method = 'PUT'
+        }
         console.log('Triggering a save')
-        const request = await fetch('http://localhost:3001/books', {
-            method: 'POST',
+        const request = await fetch(url, {
+            method: method,
             body: JSON.stringify(book),
             headers: {'content-type': 'application/json'}
         })
         const savedBook = await request.json();
-        setBooks((prevBooks) => [...prevBooks, savedBook]);
+        if (book.id) {
+            setBooks((prevBooks) => books.map((prevBook) => {
+                    if (prevBook.id === book.id) {
+                        return savedBook;
+                    } else {
+                        return prevBook;
+                    }
+                })
+            );
+        } else {
+            setBooks((prevBooks) => [...prevBooks, savedBook]);
+        }
     }
 
     return (

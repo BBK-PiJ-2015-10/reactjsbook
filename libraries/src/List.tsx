@@ -3,7 +3,7 @@ import {
     Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField,
     TableSortLabel, Grid, IconButton
 } from "@mui/material";
-import {StarBorder, Star, Delete, Add} from '@mui/icons-material';
+import {StarBorder, Star, Delete, Add, Edit} from '@mui/icons-material';
 import {Book, InputBook} from './Book'
 import ConfirmDialog from "./ConfirmDialog";
 import Form from './Form'
@@ -38,7 +38,12 @@ const List: React.FC<Props> = ({books, onDelete, onSave}) => {
         book: Book | null;
     }>({open: false, book: null});
 
-    const [formDialog, setFormDialog] = useState<boolean>(false);
+    //const [formDialog, setFormDialog] = useState<boolean>(false);
+
+    const [formDialog, setFormDialog] = useState<{
+        open: boolean,
+        book?: Book;
+    }>({open: false, book: undefined});
 
     return (
         <Grid container>
@@ -103,6 +108,15 @@ const List: React.FC<Props> = ({books, onDelete, onSave}) => {
                                                 <Delete/>
                                             </IconButton>
                                         </TableCell>
+                                        <TableCell>
+                                            <IconButton color="primary" aria-label="edit book" onClick={
+                                                () => {
+                                                    setFormDialog({open: true, book: book});
+                                                }}
+                                            >
+                                                <Edit/>
+                                            </IconButton>
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>
@@ -124,12 +138,13 @@ const List: React.FC<Props> = ({books, onDelete, onSave}) => {
             />
             <Form
                 onSave={(book: InputBook) => {
-                    setFormDialog(false);
+                    setFormDialog({open: false, book: undefined});
                     onSave(book);
-                }} open={formDialog} onClose={() => setFormDialog(false)}
+                }} book={formDialog.book} open={formDialog.open}
+                onClose={() => setFormDialog({open: false, book: undefined})}
             />
             <Fab color="primary" aria-label="Add" onClick={() => {
-                setFormDialog(true);
+                setFormDialog({open: false, book: undefined});
             }}>
                 <Add/>
             </Fab>
