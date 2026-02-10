@@ -11,8 +11,9 @@ import {Container} from "@mui/material";
 const App: React.FC = () => {
     return (
         <BrowserRouter>
-            <Nav />
-            <Container sx={{ marginTop: '80px'}}>
+            <div>CULONZON</div>
+            <Container sx={{marginTop: '80px'}}>
+                <Nav/>
                 <Routes>
                     <Route path="/list" element={<List/>}/>
                     <Route path="/form" element={<Form/>}/>

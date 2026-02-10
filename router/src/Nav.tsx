@@ -26,15 +26,15 @@ const Nav: React.FC = () => {
                 <Menu id="navigation-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)}
                       onClose={handleMenuClose}>
                     <MenuItem onClick={handleMenuClose}>
-                        <Link to="/list">List</Link>
+                        <Link to="/list">Liste</Link>
                     </MenuItem>
                     <MenuItem onClick={handleMenuClose}>
-                        <Link to="/form">Form</Link>
+                        <Link to="/form">Formular</Link>
                     </MenuItem>
                 </Menu>
             </Toolbar>
         </AppBar>
-    )
+    );
 }
 
 export default Nav;
