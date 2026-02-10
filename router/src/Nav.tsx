@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 
 import {AppBar, IconButton, Menu, MenuItem, Toolbar} from "@mui/material";
-//import {Menu as MenuIcon} from "@mui/material";
 import {Link} from "react-router-dom";
 import {Menu as MenuIcon} from "@mui/icons-material";
 
@@ -10,6 +9,7 @@ const Nav: React.FC = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     function handleMenuOpen(event: React.MouseEvent<HTMLButtonElement>): void {
+        console.log(`Picked `+event.currentTarget)
         setAnchorEl(event.currentTarget);
     }
 
