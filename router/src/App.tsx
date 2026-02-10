@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import List from './List';
 import Form from './Form';
 import Nav from './Nav'
@@ -11,7 +11,7 @@ import {Container} from "@mui/material";
 
 const App: React.FC = () => {
     return (
-        <BrowserRouter>
+        <>
             <div>CULONZON</div>
             <Container sx={{marginTop: '80px'}}>
                 <Nav/>
@@ -22,7 +22,7 @@ const App: React.FC = () => {
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </Container>
-        </BrowserRouter>
+        </>
     )
 };
 
