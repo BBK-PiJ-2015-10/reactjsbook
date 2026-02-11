@@ -1,23 +1,34 @@
-import React from 'react';
-import {Routes, Route, Navigate} from 'react-router-dom';
+import React, {useState} from 'react';
+import {Routes, Route, Navigate, useNavigate} from 'react-router-dom';
 import List from './List';
 import Form from './Form';
 import Nav from './Nav'
 import NotFound from "./NotFound";
+import Login from './Login';
 
 import './App.css';
 import {Container} from "@mui/material";
 
 
 const App: React.FC = () => {
+    const navigate = useNavigate();
+    const [isLoggedIn, setLoggedIn] = useState(false);
+
+    function handleLogin(username: string, password: string): void {
+        if (username === 'admin' && password === 'test') {
+            setLoggedIn(true);
+            navigate('/');
+        }
+    }
+
     return (
         <>
-            <div>CULONZON</div>
             <Container sx={{marginTop: '80px'}}>
                 <Nav/>
                 <Routes>
-                    <Route path="/list" element={<List/>}/>
-                    <Route path="/form" element={<Form/>}/>
+                    <Route path="/list" element={isLoggedIn ? <List/> : <Navigate to="/login"/>}/>
+                    <Route path="/form" element={isLoggedIn ? <Form/> : <Navigate to="/login"/>}/>
+                    <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
                     <Route path="/" element={<Navigate to="/list"/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
