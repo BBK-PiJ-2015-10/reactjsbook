@@ -15,3 +15,12 @@ npx tsc --init
 # To Build the library
 
 npm install rimraf
+
+# To add needed dep
+
+npm install @types/react
+npm install @emotion/react @emotion/styled
+
+# To run build
+
+npm run build

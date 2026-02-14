@@ -31,7 +31,7 @@ const config = [
     {
         input: 'dist/esm/types/index.d.ts',
         output: [{file: 'dist/cjs/index.d.ts', format: 'es'}],
-        plugins: [dts()]
+        plugins: [dts()],
     }
 ]
 
