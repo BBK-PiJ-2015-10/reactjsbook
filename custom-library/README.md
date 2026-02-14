@@ -24,3 +24,10 @@ npm install @emotion/react @emotion/styled
 # To run build
 
 npm run build
+
+# To fix dependencies issues
+
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+

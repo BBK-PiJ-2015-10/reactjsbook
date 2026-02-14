@@ -30,8 +30,10 @@ const config = [
     },
     {
         input: 'dist/esm/types/index.d.ts',
-        output: [{file: 'dist/cjs/index.d.ts', format: 'es'}],
+        output: [{file: 'dist/index.d.ts', format: 'es'}],
         plugins: [dts()],
     }
 ]
+
+export default config;
 
