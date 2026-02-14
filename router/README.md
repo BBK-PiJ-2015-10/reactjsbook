@@ -12,6 +12,11 @@ npm install @mui/icons-material @mui/material
 npm install @emotion/react @emotion/styled
 npm install @fontsource/roboto
 
+npm install react-hook-form
+
+## For backend
+npm install json-server
+
 ## Available Scripts
 
 In the project directory, you can run:

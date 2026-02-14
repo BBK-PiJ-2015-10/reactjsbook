@@ -26,8 +26,10 @@ const App: React.FC = () => {
             <Container sx={{marginTop: '80px'}}>
                 <Nav/>
                 <Routes>
-                    <Route path="/list" element={isLoggedIn ? <List/> : <Navigate to="/login"/>}/>
-                    <Route path="/form" element={isLoggedIn ? <Form/> : <Navigate to="/login"/>}/>
+                    <Route path="/list" element={<List/>}>
+                        <Route path="edit/:id/" element={<Form/>}/>
+                        <Route path="new" element={<Form/>}/>
+                    </Route>
                     <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
                     <Route path="/" element={<Navigate to="/list"/>}/>
                     <Route path="*" element={<NotFound/>}/>
@@ -36,6 +38,24 @@ const App: React.FC = () => {
         </>
     )
 };
+
+
+// return (
+//     <>
+//         <Container sx={{marginTop: '80px'}}>
+//             <Nav/>
+//             <Routes>
+//                 <Route path="/list" element={isLoggedIn ? <List/> : <Navigate to="/login"/>}>
+//                     <Route path="edit/:id/" element={<Form/>}/>
+//                     <Route path="new" element={<Form/>}/>
+//                 </Route>
+//                 <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
+//                 <Route path="/" element={<Navigate to="/list"/>}/>
+//                 <Route path="*" element={<NotFound/>}/>
+//             </Routes>
+//         </Container>
+//     </>
+// )
 
 // function App() {
 //   return (

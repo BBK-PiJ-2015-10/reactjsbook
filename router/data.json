@@ -1,0 +1,28 @@
+{
+  "books": [
+    {
+      "title": "Java 25",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "4533",
+      "id": 3
+    },
+    {
+      "title": "dfds",
+      "author": "biruta",
+      "isbn": "99",
+      "id": 4
+    },
+    {
+      "title": "otheros",
+      "author": "birutas",
+      "isbn": "98",
+      "id": 6
+    },
+    {
+      "title": "cat",
+      "author": "dfasdf",
+      "isbn": "453",
+      "id": 7
+    }
+  ]
+}
