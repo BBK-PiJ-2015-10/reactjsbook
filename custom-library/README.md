@@ -11,3 +11,7 @@ npm install rollup-plugin-dts rollup-plugin-peer-deps-external @rollup/plugin-te
 # To add typescript
 
 npx tsc --init
+
+# To Build the library
+
+npm install rimraf
