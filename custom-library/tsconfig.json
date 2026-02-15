@@ -1,6 +1,20 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "target": "es2016",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+
     // File Layout
     // "rootDir": "./src",
     // "outDir": "./dist",
@@ -8,11 +22,8 @@
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     //"module": "nodenext",
-    "module": "ESNext",
+
     //"target": "esnext",
-    "target": "es2016",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     //"types": [],
     // For nodejs:
     // "lib": ["esnext"],
@@ -20,12 +31,7 @@
     // and npm install -D @types/node
 
     // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "types",
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "emitDeclarationOnly": true,
+
     //"declarationMap": true,
 
     // Stricter Typechecking Options
@@ -41,12 +47,11 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
+
     //"verbatimModuleSyntax": true,
     //"isolatedModules": true,
     //"noUncheckedSideEffectImports": true,
     //"moduleDetection": "force",
-    "skipLibCheck": true
+
   }
 }

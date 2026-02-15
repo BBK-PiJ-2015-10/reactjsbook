@@ -25,12 +25,12 @@ const config = [
             commonjs(),
             typescript({tsconfig: './tsconfig.json'}),
             peerDepsExternal(),
-            terser()
+            terser(),
         ],
     },
     {
         input: 'dist/esm/types/index.d.ts',
-        output: [{file: 'dist/index.d.ts', format: 'es'}],
+        output: [{ file: 'dist/index.d.ts', format: 'es'}],
         plugins: [dts()],
     }
 ]
