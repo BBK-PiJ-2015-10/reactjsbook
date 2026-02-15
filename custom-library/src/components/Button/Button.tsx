@@ -3,7 +3,7 @@ import {StyledButton} from "./Button.style";
 
 type Props = {
     children: string;
-    onClick: (event: MouseEvent<HTMLButtonElement>) => void
+    onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button: React.FC<Props> = ({children, onClick}) => {
@@ -11,7 +11,7 @@ const Button: React.FC<Props> = ({children, onClick}) => {
         <StyledButton onClick={onClick}>
             {children}
         </StyledButton>
-    )
+    );
 };
 
 export default Button;

@@ -27,6 +27,8 @@ npm run build
 
 # To fix dependencies issues
 
+npm install tslib
+
 rm -rf node_modules package-lock.json
 npm cache clean --force
 npm install
