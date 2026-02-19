@@ -10,6 +10,8 @@ npm install @reduxjs/toolkit react-redux
 
 plus copy/paste Hooks and store and feature/counter 
 
+npm install react-router-dom react-hook-form
+
 ## Available Scripts
 
 In the project directory, you can run:
