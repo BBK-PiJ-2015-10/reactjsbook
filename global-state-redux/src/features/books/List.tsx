@@ -1,7 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-//import {RootState} from "../../app/store";
-import {selectBooks, selectBook, selectRatingFilter} from "./booksSlice";
+//import {selectBooks, selectBook, selectRatingFilter, remove} from "./booksSlice";
+import {selectBooks, remove} from "./booksSlice";
+import {useAppDispatch} from "../../app/Hooks";
 
 const List: React.FC = () => {
 
@@ -9,9 +10,11 @@ const List: React.FC = () => {
 
     const books = useSelector(selectBooks)
 
-    const selectBookWithId2 = useSelector(selectBook)(2)
+    //const selectBookWithId2 = useSelector(selectBook)(2)
 
-    const dog = useSelector(selectRatingFilter)
+    //const dog = useSelector(selectRatingFilter)
+
+    const dispatch = useAppDispatch();
 
     return (
         <table>
@@ -28,6 +31,11 @@ const List: React.FC = () => {
                     <td>{book.title}</td>
                     <td>{book.author}</td>
                     <td>{book.isbn}</td>
+                    <td>
+                        <button onClick={() => dispatch(remove(book.id))}>
+                            Delete
+                        </button>
+                    </td>
                 </tr>
             ))}
             </tbody>

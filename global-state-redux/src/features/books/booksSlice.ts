@@ -1,4 +1,4 @@
-import {createSlice, createSelector} from "@reduxjs/toolkit";
+import {createSlice, createSelector, PayloadAction} from "@reduxjs/toolkit";
 import {Book, InputBook} from './books';
 import booksData from "./booksData";
 import {RootState} from "../../app/store";
@@ -23,8 +23,17 @@ export const booksSlice = createSlice({
         books: booksData,
         ratingFilter: null
     } as BooksState,
-    reducers: {},
+    reducers: {
+        remove(state, action: PayloadAction<number>) {
+            const index = state.books.findIndex(
+                (book) => book.id === action.payload
+            );
+            state.books.splice(index, 1)
+        }
+    },
 });
+
+export const {remove} = booksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.books.books
 
