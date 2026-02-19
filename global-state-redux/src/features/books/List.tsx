@@ -1,13 +1,17 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 //import {RootState} from "../../app/store";
-import {selectBooks} from "./booksSlice";
+import {selectBooks, selectBook, selectRatingFilter} from "./booksSlice";
 
 const List: React.FC = () => {
 
     //const books = useSelector((state: RootState) => state.books).books;
 
     const books = useSelector(selectBooks)
+
+    const selectBookWithId2 = useSelector(selectBook)(2)
+
+    const dog = useSelector(selectRatingFilter)
 
     return (
         <table>
