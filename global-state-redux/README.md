@@ -12,6 +12,8 @@ plus copy/paste Hooks and store and feature/counter
 
 npm install react-router-dom react-hook-form
 
+npm install json-server
+
 ## Available Scripts
 
 In the project directory, you can run:
