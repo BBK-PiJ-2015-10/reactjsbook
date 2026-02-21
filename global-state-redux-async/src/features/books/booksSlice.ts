@@ -8,6 +8,7 @@ import {RootState} from "../../app/store";
 export type BooksState = {
     books: Book[],
     loadingState: null | 'pending' | 'completed' | 'error',
+    removeState: null | 'pending' | 'completed' | 'error',
     ratingFilter: number | null;
 };
 
@@ -39,21 +40,39 @@ export const loadData = createAsyncThunk(
     }
 );
 
+export const deleteData = createAsyncThunk(
+    'books/remove',
+    async (id: number, {rejectWithValue}) => {
+        try {
+            const response = await fetch(`http://localhost:3001/books/${id}`,
+                {method: 'DELETE'});
+            if (response.ok) {
+                return id;
+            } else {
+                return Promise.reject();
+            }
+        } catch (e) {
+            return rejectWithValue(e);
+        }
+    }
+);
+
 
 export const booksSlice = createSlice({
     name: 'books',
     initialState: {
         books: [],
         loadingState: null,
+        removeState: null,
         ratingFilter: null,
     } as BooksState,
     reducers: {
-        remove(state, action: PayloadAction<number>) {
-            const index = state.books.findIndex(
-                (book) => book.id === action.payload
-            );
-            state.books.splice(index, 1)
-        },
+        // remove(state, action: PayloadAction<number>) {
+        //     const index = state.books.findIndex(
+        //         (book) => book.id === action.payload
+        //     );
+        //     state.books.splice(index, 1)
+        // },
         save(state, action: PayloadAction<InputBook>) {
             if (action.payload.id) {
                 const index = state.books.findIndex((book) => book.id === action.payload.id);
@@ -76,15 +95,30 @@ export const booksSlice = createSlice({
             })
             .addCase(loadData.rejected, (state) => {
                 state.loadingState = 'error';
+            });
+        builder
+            .addCase(deleteData.pending, (state) => {
+                state.removeState = 'pending';
+            })
+            .addCase(deleteData.fulfilled, (state, action) => {
+                state.removeState = 'completed';
+                const index = state.books.findIndex(
+                    (book) => book.id === action.payload
+                );
+                state.books.splice(index, 1)
+            })
+            .addCase(deleteData.rejected, (state) => {
+                state.removeState = 'error';
             })
     }
 });
 
-export const {remove, save} = booksSlice.actions;
+export const {save} = booksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.books.books
 
-export const selectLoadingState = (state: RootState) => state.books.loadingState
+export const selectLoadingState = (state: RootState) => state.books.loadingState;
+export const selectRemoveState = (state: RootState) => state.books.removeState;
 
 export const selectRatingFilter = (state: RootState) => state.books.ratingFilter;
 

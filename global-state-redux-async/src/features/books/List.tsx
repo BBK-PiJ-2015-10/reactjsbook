@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
 //import {selectBooks, selectBook, selectRatingFilter, remove} from "./booksSlice";
-import {selectBooks, remove, selectLoadingState, loadData} from "./booksSlice";
+import {selectBooks, selectRemoveState, selectLoadingState, loadData, deleteData} from "./booksSlice";
 import {useAppDispatch} from "../../app/Hooks";
 import {useNavigate} from "react-router-dom";
 import booksData from "./booksData";
@@ -12,6 +12,7 @@ const List: React.FC = () => {
 
     const books = useSelector(selectBooks);
     const loadingState = useSelector(selectLoadingState);
+    const removeState = useSelector(selectRemoveState);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -21,15 +22,16 @@ const List: React.FC = () => {
 
     useEffect(() => {
         dispatch(loadData())
-    },[dispatch]);
+    }, [dispatch]);
 
-    if (loadingState === 'pending'){
+    if (loadingState === 'pending') {
         return <div>Loading...</div>
-    } else if (loadingState === 'error'){
+    } else if (loadingState === 'error') {
         return <div>An eerror has occurred</div>
-    }  else {
-
+    } else {
         return (<>
+                {removeState === 'pending' && <div>Data record being deleted</div>}
+                {removeState === 'error' && <div>An error occurred during deletion</div>}
                 <table>
                     <thead>
                     <tr>
@@ -45,7 +47,7 @@ const List: React.FC = () => {
                             <td>{book.author}</td>
                             <td>{book.isbn}</td>
                             <td>
-                                <button onClick={() => dispatch(remove(book.id))}>
+                                <button onClick={() => dispatch(deleteData(book.id))}>
                                     Delete
                                 </button>
                             </td>
