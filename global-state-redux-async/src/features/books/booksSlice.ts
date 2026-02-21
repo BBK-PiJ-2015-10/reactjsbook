@@ -1,4 +1,4 @@
-import {createSlice, createSelector, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, createSelector, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
 import {Book, InputBook} from './books';
 import booksData from "./booksData";
 import {RootState} from "../../app/store";
@@ -7,6 +7,7 @@ import {RootState} from "../../app/store";
 
 export type BooksState = {
     books: Book[],
+    loadingState: null | 'pending' | 'completed' | 'error',
     ratingFilter: number | null;
 };
 
@@ -16,12 +17,35 @@ export type BooksState = {
 //     reducers: {},
 // });
 
+export const loadData = createAsyncThunk(
+    'books/loadData',
+    async (object, {rejectWithValue}) => {
+        try {
+            console.log("Trying to fetch books");
+            const response = await fetch('http://localhost:3001/books');
+            console.log("Fetched books");
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                return data;
+            } else {
+                console.log("Failing")
+                return Promise.reject();
+            }
+        } catch (e) {
+            console.log("Failing2")
+            return rejectWithValue(e);
+        }
+    }
+);
+
 
 export const booksSlice = createSlice({
     name: 'books',
     initialState: {
-        books: booksData,
-        ratingFilter: null
+        books: [],
+        loadingState: null,
+        ratingFilter: null,
     } as BooksState,
     reducers: {
         remove(state, action: PayloadAction<number>) {
@@ -41,11 +65,26 @@ export const booksSlice = createSlice({
             }
         }
     },
+    extraReducers: builder => {
+        builder
+            .addCase(loadData.pending, (state) => {
+                state.loadingState = 'pending';
+            })
+            .addCase(loadData.fulfilled, (state, action) => {
+                state.loadingState = 'completed';
+                state.books = action.payload;
+            })
+            .addCase(loadData.rejected, (state) => {
+                state.loadingState = 'error';
+            })
+    }
 });
 
 export const {remove, save} = booksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.books.books
+
+export const selectLoadingState = (state: RootState) => state.books.loadingState
 
 export const selectRatingFilter = (state: RootState) => state.books.ratingFilter;
 
