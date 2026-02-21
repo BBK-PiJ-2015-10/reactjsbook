@@ -16,9 +16,15 @@
     },
     {
       "title": "Scala Jedis",
-      "author": "Palacios",
+      "author": "Yasser Alejandro Palacios",
       "isbn": "6979",
       "id": 3
+    },
+    {
+      "title": "Golang is coming",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "6990",
+      "id": 4
     }
   ]
 }
