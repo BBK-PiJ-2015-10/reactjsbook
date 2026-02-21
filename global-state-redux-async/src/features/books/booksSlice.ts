@@ -9,6 +9,7 @@ export type BooksState = {
     books: Book[],
     loadingState: null | 'pending' | 'completed' | 'error',
     removeState: null | 'pending' | 'completed' | 'error',
+    savingState: null | 'pending' | 'completed' | 'error',
     ratingFilter: number | null;
 };
 
@@ -57,6 +58,35 @@ export const deleteData = createAsyncThunk(
     }
 );
 
+export const saveData = createAsyncThunk(
+    'books/save',
+    async (book: InputBook, {rejectWithValue}) => {
+        try {
+            let httpMethod = 'POST'
+            if (book.id) {
+                httpMethod = 'PUT'
+            }
+            const response = await fetch('http://localhost:3001/books/',
+                {
+                    method: httpMethod,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(book)
+                });
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                return Promise.reject()
+            }
+        } catch (e) {
+            console.log('Could not save book');
+            return rejectWithValue(e);
+        }
+    }
+);
+
 
 export const booksSlice = createSlice({
     name: 'books',
@@ -64,6 +94,7 @@ export const booksSlice = createSlice({
         books: [],
         loadingState: null,
         removeState: null,
+        savingState: null,
         ratingFilter: null,
     } as BooksState,
     reducers: {
@@ -73,16 +104,16 @@ export const booksSlice = createSlice({
         //     );
         //     state.books.splice(index, 1)
         // },
-        save(state, action: PayloadAction<InputBook>) {
-            if (action.payload.id) {
-                const index = state.books.findIndex((book) => book.id === action.payload.id);
-                state.books[index] = action.payload as Book;
-            } else {
-                const nextId = Math.max(...state.books.map(
-                    (book) => book.id)) + 1;
-                state.books.push({...action.payload, id: nextId})
-            }
-        }
+        // save(state, action: PayloadAction<InputBook>) {
+        //     if (action.payload.id) {
+        //         const index = state.books.findIndex((book) => book.id === action.payload.id);
+        //         state.books[index] = action.payload as Book;
+        //     } else {
+        //         const nextId = Math.max(...state.books.map(
+        //             (book) => book.id)) + 1;
+        //         state.books.push({...action.payload, id: nextId})
+        //     }
+        // }
     },
     extraReducers: builder => {
         builder
@@ -109,16 +140,35 @@ export const booksSlice = createSlice({
             })
             .addCase(deleteData.rejected, (state) => {
                 state.removeState = 'error';
+            });
+        builder
+            .addCase(saveData.pending, (state) => {
+                state.savingState = 'pending';
             })
+            .addCase(saveData.fulfilled, (state, action) => {
+                state.savingState = 'completed';
+                if (action.payload.id) {
+                    const index = state.books.findIndex((book) => book.id === action.payload.id);
+                    state.books[index] = action.payload as Book;
+                } else {
+                    const nextId = Math.max(...state.books.map(
+                        (book) => book.id)) + 1;
+                    state.books.push({...action.payload, id: nextId})
+                }
+            })
+            .addCase(saveData.rejected, (state) => {
+                state.savingState = 'error';
+            });
     }
 });
 
-export const {save} = booksSlice.actions;
+//export const {save} = booksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.books.books
 
 export const selectLoadingState = (state: RootState) => state.books.loadingState;
 export const selectRemoveState = (state: RootState) => state.books.removeState;
+export const selectSaveState = (state: RootState) => state.books.savingState;
 
 export const selectRatingFilter = (state: RootState) => state.books.ratingFilter;
 
