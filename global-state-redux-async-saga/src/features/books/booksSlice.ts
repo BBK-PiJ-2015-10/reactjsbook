@@ -15,34 +15,6 @@ export type BooksState = {
     ratingFilter: number | null;
 };
 
-// export const booksSlice = createSlice({
-//     name: 'books',
-//     initialState: {books: booksData},
-//     reducers: {},
-// });
-
-// export const loadData = createAsyncThunk(
-//     'books/loadData',
-//     async (object, {rejectWithValue}) => {
-//         try {
-//             console.log("Trying to fetch books");
-//             const response = await fetch('http://localhost:3001/books');
-//             console.log("Fetched books");
-//             if (response.ok) {
-//                 const data = await response.json();
-//                 console.log(data);
-//                 return data;
-//             } else {
-//                 console.log("Failing")
-//                 return Promise.reject();
-//             }
-//         } catch (e) {
-//             console.log("Failing2")
-//             return rejectWithValue(e);
-//         }
-//     }
-// );
-
 export const deleteData = createAsyncThunk(
     'books/remove',
     async (id: number, {rejectWithValue}) => {
