@@ -1,6 +1,8 @@
-import {createSlice, createSelector, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createSelector, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
+import {ActionType, getType} from "typesafe-actions";
 import {Book, InputBook} from './books';
-import booksData from "./booksData";
+import {loadDataAction} from "./books.actions";
+//import booksData from "./booksData";
 import {RootState} from "../../app/store";
 
 // export type BooksState = Book[]
@@ -19,27 +21,27 @@ export type BooksState = {
 //     reducers: {},
 // });
 
-export const loadData = createAsyncThunk(
-    'books/loadData',
-    async (object, {rejectWithValue}) => {
-        try {
-            console.log("Trying to fetch books");
-            const response = await fetch('http://localhost:3001/books');
-            console.log("Fetched books");
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);
-                return data;
-            } else {
-                console.log("Failing")
-                return Promise.reject();
-            }
-        } catch (e) {
-            console.log("Failing2")
-            return rejectWithValue(e);
-        }
-    }
-);
+// export const loadData = createAsyncThunk(
+//     'books/loadData',
+//     async (object, {rejectWithValue}) => {
+//         try {
+//             console.log("Trying to fetch books");
+//             const response = await fetch('http://localhost:3001/books');
+//             console.log("Fetched books");
+//             if (response.ok) {
+//                 const data = await response.json();
+//                 console.log(data);
+//                 return data;
+//             } else {
+//                 console.log("Failing")
+//                 return Promise.reject();
+//             }
+//         } catch (e) {
+//             console.log("Failing2")
+//             return rejectWithValue(e);
+//         }
+//     }
+// );
 
 export const deleteData = createAsyncThunk(
     'books/remove',
@@ -98,33 +100,33 @@ export const booksSlice = createSlice({
         ratingFilter: null,
     } as BooksState,
     reducers: {
-        // remove(state, action: PayloadAction<number>) {
-        //     const index = state.books.findIndex(
-        //         (book) => book.id === action.payload
-        //     );
-        //     state.books.splice(index, 1)
-        // },
-        // save(state, action: PayloadAction<InputBook>) {
-        //     if (action.payload.id) {
-        //         const index = state.books.findIndex((book) => book.id === action.payload.id);
-        //         state.books[index] = action.payload as Book;
-        //     } else {
-        //         const nextId = Math.max(...state.books.map(
-        //             (book) => book.id)) + 1;
-        //         state.books.push({...action.payload, id: nextId})
-        //     }
-        // }
+        remove(state, action: PayloadAction<number>) {
+            const index = state.books.findIndex(
+                (book) => book.id === action.payload
+            );
+            state.books.splice(index, 1)
+        },
+        save(state, action: PayloadAction<InputBook>) {
+            if (action.payload.id) {
+                const index = state.books.findIndex((book) => book.id === action.payload.id);
+                state.books[index] = action.payload as Book;
+            } else {
+                const nextId = Math.max(...state.books.map(
+                    (book) => book.id)) + 1;
+                state.books.push({...action.payload, id: nextId})
+            }
+        }
     },
     extraReducers: builder => {
         builder
-            .addCase(loadData.pending, (state) => {
+            .addCase(getType(loadDataAction.request), (state) => {
                 state.loadingState = 'pending';
             })
-            .addCase(loadData.fulfilled, (state, action) => {
+            .addCase(getType(loadDataAction.success), (state, action: ActionType<typeof loadDataAction.success>) => {
                 state.loadingState = 'completed';
                 state.books = action.payload;
             })
-            .addCase(loadData.rejected, (state) => {
+            .addCase(getType(loadDataAction.failure), (state) => {
                 state.loadingState = 'error';
             });
         builder

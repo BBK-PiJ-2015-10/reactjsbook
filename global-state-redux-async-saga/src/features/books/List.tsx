@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
+import {AnyAction} from "@reduxjs/toolkit";
 //import {selectBooks, selectBook, selectRatingFilter, remove} from "./booksSlice";
-import {selectBooks, selectRemoveState, selectLoadingState, loadData, deleteData} from "./booksSlice";
+import {selectBooks, selectRemoveState, selectLoadingState, deleteData} from "./booksSlice";
+import {loadDataAction} from "./books.actions";
 import {useAppDispatch} from "../../app/Hooks";
 import {useNavigate} from "react-router-dom";
 import booksData from "./booksData";
 
 const List: React.FC = () => {
 
-    //const books = useSelector((state: RootState) => state.books).books;
 
     const books = useSelector(selectBooks);
     const loadingState = useSelector(selectLoadingState);
@@ -16,12 +17,8 @@ const List: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    //const selectBookWithId2 = useSelector(selectBook)(2)
-
-    //const dog = useSelector(selectRatingFilter)
-
     useEffect(() => {
-        dispatch(loadData())
+        dispatch(loadDataAction.request())
     }, [dispatch]);
 
     if (loadingState === 'pending') {
