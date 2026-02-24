@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
 import {AnyAction} from "@reduxjs/toolkit";
 //import {selectBooks, selectBook, selectRatingFilter, remove} from "./booksSlice";
-import {selectBooks, selectRemoveState, selectLoadingState, deleteData} from "./booksSlice";
-import {loadDataAction} from "./books.actions";
+import {selectBooks, selectRemoveState, selectLoadingState} from "./booksSlice";
+import {loadDataAction, removeAction} from "./books.actions";
 import {useAppDispatch} from "../../app/Hooks";
 import {useNavigate} from "react-router-dom";
 import booksData from "./booksData";
@@ -44,7 +44,7 @@ const List: React.FC = () => {
                             <td>{book.author}</td>
                             <td>{book.isbn}</td>
                             <td>
-                                <button onClick={() => dispatch(deleteData(book.id))}>
+                                <button onClick={() => dispatch(removeAction.request(book.id))}>
                                     Delete
                                 </button>
                             </td>

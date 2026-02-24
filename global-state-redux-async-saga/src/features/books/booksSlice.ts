@@ -1,7 +1,7 @@
 import {createSlice, createSelector, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
 import {ActionType, getType} from "typesafe-actions";
 import {Book, InputBook} from './books';
-import {loadDataAction} from "./books.actions";
+import {loadDataAction, removeAction} from "./books.actions";
 //import booksData from "./booksData";
 import {RootState} from "../../app/store";
 
@@ -14,23 +14,6 @@ export type BooksState = {
     savingState: null | 'pending' | 'completed' | 'error',
     ratingFilter: number | null;
 };
-
-export const deleteData = createAsyncThunk(
-    'books/remove',
-    async (id: number, {rejectWithValue}) => {
-        try {
-            const response = await fetch(`http://localhost:3001/books/${id}`,
-                {method: 'DELETE'});
-            if (response.ok) {
-                return id;
-            } else {
-                return Promise.reject();
-            }
-        } catch (e) {
-            return rejectWithValue(e);
-        }
-    }
-);
 
 export const saveData = createAsyncThunk(
     'books/save',
@@ -102,17 +85,17 @@ export const booksSlice = createSlice({
                 state.loadingState = 'error';
             });
         builder
-            .addCase(deleteData.pending, (state) => {
+            .addCase(getType(removeAction.request), (state) => {
                 state.removeState = 'pending';
             })
-            .addCase(deleteData.fulfilled, (state, action) => {
+            .addCase(getType(removeAction.success), (state, action: ActionType<typeof removeAction.success>) => {
                 state.removeState = 'completed';
                 const index = state.books.findIndex(
                     (book) => book.id === action.payload
                 );
                 state.books.splice(index, 1)
             })
-            .addCase(deleteData.rejected, (state) => {
+            .addCase(getType(removeAction.failure), (state) => {
                 state.removeState = 'error';
             });
         builder
