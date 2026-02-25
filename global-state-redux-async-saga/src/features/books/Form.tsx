@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
-import {selectSaveState, selectBook, saveData} from "./booksSlice";
+import {selectSaveState, selectBook} from "./booksSlice";
+import {saveAction} from "./books.actions";
 import {useForm} from "react-hook-form";
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch} from "../../app/Hooks";
@@ -34,7 +35,7 @@ const Form: React.FC = () => {
             {savingState === 'pending' && <div>Data is being saved</div>}
             {savingState === 'error' && <div>Data could not be saved</div>}
             <form onSubmit={handleSubmit((data) => {
-                dispatch(saveData(data));
+                dispatch(saveAction.request(data));
                 navigate('/list');
             })}>
                 <div>
