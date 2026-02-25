@@ -20,3 +20,5 @@ const loadData: Epic = (action$) =>
             )
         )
     );
+
+export default combineEpics(loadData);
