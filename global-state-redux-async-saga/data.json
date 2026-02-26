@@ -25,24 +25,6 @@
       "author": "Yasser Alejandro Palacios",
       "isbn": "6992",
       "id": 4
-    },
-    {
-      "title": "Java",
-      "author": "Palacios",
-      "isbn": "890",
-      "id": 6
-    },
-    {
-      "title": "Java 29",
-      "author": "Yasser A Palacios",
-      "isbn": "890",
-      "id": 7
-    },
-    {
-      "title": "Java 29",
-      "author": "Yasser A Palacios",
-      "isbn": "890",
-      "id": 8
     }
   ]
 }

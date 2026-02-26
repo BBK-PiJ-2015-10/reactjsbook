@@ -53,24 +53,25 @@ const save: Epic = (action$) =>
         ofType(saveAction.request.toString()),
         switchMap(({payload: book}: { payload: Book }) => {
             let url = 'http://localhost:3001/books';
-            let method = 'POST';
+            let httpMethod = 'POST';
             if (book.id) {
                 url += `/${book.id}`;
-                method = 'PUT';
+                httpMethod = 'PUT';
             }
+            const fetchPromise = fetch(url, {
+                method: httpMethod, headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(book)
+            }).then((response) => {
+                if (response.ok) {
+                    console.log("Saved "+JSON.stringify(book))
+                    return response.json();
+                } else {
+                    return Promise.reject();
+                }
+            });
             return from(
-                fetch(url, {
-                    method: method, headers: {
-                        'Content-Type': 'application/json'
-                    }, body: JSON.stringify(book)
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            return response.json();
-                        } else {
-                            return Promise.reject();
-                        }
-                    })
+                fetchPromise
             ).pipe(
                 map((data) => saveAction.success(data)),
                 catchError((error) => of(saveAction.failure(error)))
