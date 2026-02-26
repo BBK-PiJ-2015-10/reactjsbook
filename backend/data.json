@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Next.js",
+      "author": "Philip Ackermann",
+      "isbn": 123,
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "title": "React.js",
+      "author": "Philip Ackermann",
+      "isbn": 453,
+      "rating": 5
+    },
+    {
+      "title": "Scala Jedis",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "6979",
+      "id": 3
+    },
+    {
+      "title": "Golang is coming",
+      "author": "Yasser Alejandro Palacios",
+      "isbn": "6990",
+      "id": 4
+    },
+    {
+      "title": "Hello React",
+      "author": "Palacios",
+      "isbn": "456",
+      "id": 5
+    }
+  ]
+}
