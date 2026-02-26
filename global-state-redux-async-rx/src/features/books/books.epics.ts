@@ -2,6 +2,7 @@ import {combineEpics, ofType, Epic} from "redux-observable";
 import {from, of} from "rxjs";
 import {map, catchError, switchMap} from "rxjs";
 import {loadDataAction, removeAction, saveAction} from "./books.actions";
+import {InputBook} from "./books";
 
 // Function that receives a stream of actions and return a stream of actions
 // $ to signal data or event streams
@@ -49,7 +50,7 @@ const remove: Epic = (action$) =>
 const save: Epic = (action$) =>
     action$.pipe(
         ofType(saveAction.request.toString()),
-        switchMap(({payload: book}: {payload: any}) => {
+        switchMap(({payload: book}: {payload: InputBook}) => {
             let url = 'http://localhost:3001/books';
             let method = 'POST';
             if (book.id){
@@ -58,7 +59,11 @@ const save: Epic = (action$) =>
             }
             
             return from(
-                fetch(url, {method: method})
+                fetch(url, {
+                    method: method,
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(book)
+                })
                     .then((response) => {
                         if (response.ok) {
                             return response.json();
