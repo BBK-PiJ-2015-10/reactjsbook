@@ -5,7 +5,7 @@ import loginReducer from '../features/login/loginSlice'
 import {createEpicMiddleware} from "redux-observable";
 import rootEpic from "./rootEpic";
 
-const epicMiddleware = createEpicMiddleware<any,any,RootState>();
+const epicMiddleware = createEpicMiddleware();
 
 
 export const store = configureStore({
@@ -22,6 +22,6 @@ export const store = configureStore({
 epicMiddleware.run(rootEpic);
 
 export type AppDispatch = typeof store.dispatch;
-//export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
