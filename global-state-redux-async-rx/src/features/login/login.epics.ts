@@ -2,8 +2,9 @@ import {combineEpics, ofType, Epic} from "redux-observable";
 import {from, of} from "rxjs";
 import {map, catchError, switchMap} from "rxjs";
 import {loginAction} from "./login.actions";
+import {RootState} from "../../app/store";
 
-const login: Epic = (action$) =>
+const login: Epic<any, any, RootState> = (action$) =>
     action$.pipe(
         ofType(loginAction.request.toString()),
         switchMap(({payload: credentials}) =>
