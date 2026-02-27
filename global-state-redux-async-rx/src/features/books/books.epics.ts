@@ -4,11 +4,12 @@ import {map, catchError, switchMap} from "rxjs";
 import {loadDataAction, removeAction, saveAction} from "./books.actions";
 import {Book} from "./books";
 import {selectToken} from "../login/loginSlice";
+import {RootState} from "../../app/store";
 //import {RootState} from "../../app/store";
 
 // Function that receives a stream of actions and return a stream of actions
 // $ to signal data or event streams
-const loadData: Epic = (action$, state$) =>
+const loadData: Epic<any, any, RootState, any> = (action$, state$) =>
     action$.pipe(
         ofType(loadDataAction.request.toString()),
         // combiner of outer stream (action stream ) with inner stream(http call)
@@ -32,7 +33,7 @@ const loadData: Epic = (action$, state$) =>
         )
     );
 
-const remove: Epic = (action$, state$) =>
+const remove: Epic<any, any, RootState, any> = (action$, state$) =>
     action$.pipe(
         ofType(removeAction.request.toString()),
         switchMap(({payload: id}) =>
@@ -56,7 +57,7 @@ const remove: Epic = (action$, state$) =>
 ;
 
 
-const save: Epic = (action$, state$) =>
+const save: Epic<any, any, RootState, any> = (action$, state$) =>
     action$.pipe(
         ofType(saveAction.request.toString()),
         switchMap(({payload: book}: { payload: Book }) => {

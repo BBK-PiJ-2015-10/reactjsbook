@@ -3,7 +3,7 @@ import {ActionType, getType} from "typesafe-actions";
 import {RootState} from "../../app/store";
 import {loginAction} from "./login.actions";
 
-type LoginState = {
+export type LoginState = {
     token: string;
     loginState: null | 'pending' | 'completed' | 'error';
 };
@@ -31,6 +31,7 @@ export const loginSlice = createSlice({
 });
 
 export const selectToken = (state: RootState) => state.login.token;
+
 export const selectLoginState = (state: RootState) => state.login.loginState;
 
 export default loginSlice.reducer;
