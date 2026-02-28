@@ -19,9 +19,9 @@ const login: Epic<any, any, RootState, any> = (action$) =>
                 })
                     .then((response) => {
                         if (response.ok) {
-                            return response.json();
+                            return response.text();
                         } else {
-                            Promise.reject();
+                            return Promise.reject();
                         }
                     })
             ).pipe(

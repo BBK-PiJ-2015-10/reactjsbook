@@ -12,6 +12,7 @@ const Login: React.FC = () => {
     });
 
     function handleCredentialsInputChange(event: ChangeEvent<HTMLInputElement>): void {
+        console.log('setting credentials')
         setCredentials((prevCredentailsState) => ({
             ...prevCredentailsState,
             [event.target.name]: event.target.value
@@ -19,6 +20,7 @@ const Login: React.FC = () => {
     }
 
     function handleFormSubmit(event: FormEvent<HTMLFormElement>): void {
+        console.log("Submitting login request")
         event.preventDefault();
         dispatch(loginAction.request(credentials));
     }

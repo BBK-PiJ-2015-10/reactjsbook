@@ -12,7 +12,9 @@ server.use(express.json());
 server.use(cors());
 
 server.post('/login', (req, res, next) => {
+    console.log('Someone requested a post login request')
     if (req.body.username == 'admin' && req.body.password === 'test') {
+        console.log('sending a response')
         res.send(
             jwt.sign({user: req.body.username}, secret, {expiresIn: '1800s'})
         );
