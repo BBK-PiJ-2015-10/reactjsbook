@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "JavaScript p2 - The Comprehensive guide",
+      "isbn": "123"
+    },
+    {
+      "id": "2",
+      "title": "Clean Code",
+      "isbn": "456"
+    },
+    {
+      "id": "3",
+      "title": "Design Patterns",
+      "isbn": "789"
+    }
+  ]
+}
