@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import Counter from "./Counter";
+//import Counter from "./Counter";
+import CounterUsingCallBack from "./CounterUsingCallBack";
 
 
-const AppWithoutCallback: React.FC = () => {
+const AppCounter: React.FC = () => {
 
     const [time, setTime] = useState(Date.now());
 
@@ -13,8 +14,8 @@ const AppWithoutCallback: React.FC = () => {
         return () => clearInterval(interval);
     }, [time]);
     return (
-        <Counter time={time}/>
+        <CounterUsingCallBack time={time}/>
     )
 };
 
-export default AppWithoutCallback;
+export default AppCounter;

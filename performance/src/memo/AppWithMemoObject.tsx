@@ -1,19 +1,26 @@
 import React, {useEffect, useState, ReactElement, memo} from 'react';
 
 type Props = {
-    title: string;
+    data: {
+        number: number;
+        title: string;
+    }
 }
 
-const Headline = memo(function ({title}: Props): ReactElement {
+function isEqual(prevProps: Props, nextProps: Props) {
+    return prevProps.data.title == nextProps.data.title;
+}
+
+const Headline = memo(function ({data: {title}}: Props): ReactElement {
     console.log('rendering headline')
     return (
         <h1>
             {title}
         </h1>
     )
-});
+}, isEqual);
 
-const AppWithMemo: React.FC = () => {
+const AppWithMemoObject: React.FC = () => {
 
     const [state, setState] = useState({number: 0, title: 'Hello Memo'});
 
@@ -34,8 +41,8 @@ const AppWithMemo: React.FC = () => {
     }, [])
 
     return (
-        <Headline title={state.title}/>
+        <Headline data={state}/>
     )
 };
 
-export default AppWithMemo;
+export default AppWithMemoObject;
