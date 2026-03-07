@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 npx create-react-app performance --template typescript
 
+For the router example
+npm install --save-dev @types/react-router-dom
+
+npm uninstalled @types/react-router-dom
+
 
 ## Available Scripts
 
