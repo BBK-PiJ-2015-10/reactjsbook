@@ -1,5 +1,5 @@
 import React from 'react';
-import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
+import {useMutation, useQueryClient, useSuspenseQuery} from '@tanstack/react-query';
 import {Book} from '../lazy/Book'
 
 async function getBooks(): Promise<Book[]> {
@@ -24,9 +24,9 @@ const List: React.FC = () => {
 
     const queryClient = useQueryClient();
 
-    const {data, isLoading, isError} = useQuery({
+    const {data} = useSuspenseQuery({
         queryKey: ['books'],
-        queryFn: getBooks
+        queryFn: getBooks,
     });
     const mutation = useMutation({
         mutationFn: removeBook,
@@ -35,14 +35,6 @@ const List: React.FC = () => {
         }
     });
 
-
-    if (isLoading) {
-        return <div>Loading data ...</div>
-    }
-
-    if (isError) {
-        return <div>{`An error has happened`}</div>
-    }
 
     return (
         <ul>
