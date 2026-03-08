@@ -15,6 +15,8 @@ npm install @tanstack/react-query
 
 npm install json-server
 
+npm install react-error-boundary
+
 
 ## Available Scripts
 
