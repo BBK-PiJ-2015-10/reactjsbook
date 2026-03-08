@@ -11,6 +11,10 @@ npm install --save-dev @types/react-router-dom
 
 npm uninstalled @types/react-router-dom
 
+npm install @tanstack/react-query
+
+npm install json-server
+
 
 ## Available Scripts
 

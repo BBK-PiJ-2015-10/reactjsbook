@@ -4,8 +4,9 @@ import './index.css';
 //import App from './App';
 //import AppCounter from "./callbackhook/AppCounter";
 import reportWebVitals from './reportWebVitals';
+import AppUsingQuery from "./query/AppUsingQuery";
 //import AppBooksLazy from "./lazy/AppBooksLazy";
-import AppBooksLazyRouter from "./lazyroutes/AppBooksLazyRouter";
+//import AppBooksLazyRouter from "./lazyroutes/AppBooksLazyRouter";
 //import AppBook from "./pure/AppBook";
 //import AppWithoutMemo from "./memo/AppWithoutMemo";
 //import AppWithMemo from "./memo/AppWithMemo";
@@ -16,7 +17,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <AppBooksLazyRouter/>
+        <AppUsingQuery/>
     </React.StrictMode>
 );
 
