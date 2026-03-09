@@ -1,7 +1,7 @@
 import React, {CSSProperties, ReactNode} from 'react';
 import {FixedSizeList, ListChildComponentProps} from "react-window";
 
-const books = new Array(1000000)
+const books = new Array(1_000_000)
     .fill({
         title: "Design Patterns",
         author: 'Eric Gamma',
@@ -12,11 +12,11 @@ const books = new Array(1000000)
 
 
 type InnerProps = {
-    tBodyChildren: ReactNode;
-    tBodyStyle: CSSProperties
+    children: ReactNode;
+    style: CSSProperties
 }
 
-const InnerTable: React.FC<InnerProps> = ({tBodyChildren, tBodyStyle}) => {
+const InnerTable: React.FC<InnerProps> = ({children, style}) => {
     return (
         <table>
             <thead>
@@ -28,8 +28,8 @@ const InnerTable: React.FC<InnerProps> = ({tBodyChildren, tBodyStyle}) => {
                 <th style={{width: 200}}>Rating</th>
             </tr>
             </thead>
-            <tbody style={{...tBodyStyle, position: 'absolute', width: '100%'}}>
-            {tBodyChildren}
+            <tbody style={{...style, position: 'absolute', width: '100%'}}>
+            {children}
             </tbody>
         </table>
     )
@@ -38,11 +38,11 @@ const InnerTable: React.FC<InnerProps> = ({tBodyChildren, tBodyStyle}) => {
 const Row: React.FC<ListChildComponentProps> = ({index, style}) => {
     return (
         <tr style={style}>
-            <td>{books[index].id}</td>
-            <td>{books[index].title}</td>
-            <td>{books[index].author}</td>
-            <td>{books[index].isbn}</td>
-            <td>{books[index].rating}</td>
+            <td style={{width: 50}}>{books[index].id}</td>
+            <td style={{width: 200}}>{books[index].title}</td>
+            <td style={{width: 200}}>{books[index].author}</td>
+            <td style={{width: 200}}>{books[index].isbn}</td>
+            <td style={{width: 200}}>{books[index].rating}</td>
         </tr>
     );
 }
@@ -50,7 +50,7 @@ const Row: React.FC<ListChildComponentProps> = ({index, style}) => {
 const VirtualTablesApp: React.FC = () => {
 
     return (
-        <FixedSizeList itemSize={30} height={300}
+        <FixedSizeList itemSize={30} height={340}
                        itemCount={books.length} width={750}
                        innerElementType={InnerTable}>
             {Row}
