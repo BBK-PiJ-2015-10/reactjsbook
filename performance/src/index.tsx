@@ -4,7 +4,10 @@ import './index.css';
 //import App from './App';
 //import AppCounter from "./callbackhook/AppCounter";
 import reportWebVitals from './reportWebVitals';
-import AppUsingQuery from "./query/AppUsingQuery";
+import VirtualTablesApp from "./virtualtables/VirtualTablesApp";
+
+//import NonVirtualTablesApp from "./virtualtables/NonVirtualTablesApp";
+//import AppUsingQuery from "./query/AppUsingQuery";
 //import AppBooksLazy from "./lazy/AppBooksLazy";
 //import AppBooksLazyRouter from "./lazyroutes/AppBooksLazyRouter";
 //import AppBook from "./pure/AppBook";
@@ -17,7 +20,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <AppUsingQuery/>
+        <VirtualTablesApp/>
     </React.StrictMode>
 );
 

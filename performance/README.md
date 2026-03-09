@@ -17,6 +17,8 @@ npm install json-server
 
 npm install react-error-boundary
 
+npm install --save-dev @types/react-window
+
 
 ## Available Scripts
 
