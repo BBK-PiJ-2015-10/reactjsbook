@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To recreate
 
-npx create-react-app library -template cra-template-pwa-type-script
+npx create-react-app library --template cra-template-pwa-typescript
 
 
 
