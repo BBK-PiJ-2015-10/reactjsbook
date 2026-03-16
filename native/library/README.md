@@ -7,3 +7,6 @@ cd library
 # Then set to SDK 54 specifically
 npx expo install expo@~54.0.0
 npx expo install --fix
+
+npm start
+
