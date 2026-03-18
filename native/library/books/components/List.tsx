@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 //import {FlatList, Text, View} from "react-native";
 import {Text, View} from "react-native";
 import {Book} from "./Book";
 //import styles from "../../admin/components/List.styles";
-import {Headline, Separator, FlatList, ListItem} from "../../admin/components/List.styles";
+import {Headline, Separator, FlatList, ListItem, Search} from "../../admin/components/List.styles";
 
 const books = [
     {
         id: 1,
-        title: 'Java 26',
+        title: 'Java 27',
         author: 'Yasser Alejandro Palacios',
         isbn: '4533',
         rating: 5
@@ -30,12 +30,20 @@ const books = [
 ]
 
 const List: React.FC = () => {
+    const [filter, setFilter] = useState('');
     return (
         <View>
             <Headline>Book Management</Headline>
+            <Search
+                autoCapitalize="none"
+                value={filter}
+                onChangeText={(text: string) => setFilter(text)}
+                placeholder="Search"
+            />
             <FlatList
                 ItemSeparatorComponent={() => <Separator/>}
-                data={books}
+                data={books.filter((book) =>
+                    book.title.toLocaleLowerCase().includes(filter.toLocaleLowerCase()))}
                 keyExtractor={(item) => (item as Book).id.toString()}
                 renderItem={({item}) => (
                     <ListItem>

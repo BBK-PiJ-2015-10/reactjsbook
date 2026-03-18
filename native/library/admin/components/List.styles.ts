@@ -23,6 +23,14 @@ export const ListItem = styled.View`
     flex-direction: row;
     justify-content: space-between;
 `;
+
+export const Search = styled.TextInput`
+    border: 1px solid darkgray;
+    padding: 10px 5px;
+    margin-top: 10px;
+`;
+
+
 //import {StyleSheet} from "react-native";
 
 // const styles = StyleSheet.create({
