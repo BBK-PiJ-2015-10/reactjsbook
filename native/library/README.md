@@ -10,3 +10,5 @@ npx expo install --fix
 
 npm start
 
+npm install @emotion/react @emotion/native
+

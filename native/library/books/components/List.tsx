@@ -1,12 +1,14 @@
 import React from "react";
-import {FlatList, Text, View} from "react-native";
+//import {FlatList, Text, View} from "react-native";
+import {Text, View} from "react-native";
 import {Book} from "./Book";
-import styles from "../../admin/components/List.styles";
+//import styles from "../../admin/components/List.styles";
+import {Headline, Separator, FlatList, ListItem} from "../../admin/components/List.styles";
 
 const books = [
     {
         id: 1,
-        title: 'Java 25',
+        title: 'Java 26',
         author: 'Yasser Alejandro Palacios',
         isbn: '4533',
         rating: 5
@@ -30,14 +32,16 @@ const books = [
 const List: React.FC = () => {
     return (
         <View>
-            <Text style={styles.headline}>Book Management</Text>
-            <FlatList<Book>
-                style={styles.list}
-                ItemSeparatorComponent={() => <View style={styles.separator}/>}
+            <Headline>Book Management</Headline>
+            <FlatList
+                ItemSeparatorComponent={() => <Separator/>}
                 data={books}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => (item as Book).id.toString()}
                 renderItem={({item}) => (
-                    <View style={styles.listItem}><Text>{item.title}</Text><Text>&gt;</Text></View>)}></FlatList>
+                    <ListItem>
+                        <Text>{(item as Book).title}</Text>
+                        <Text>&gt;</Text></ListItem>)}>
+            </FlatList>
         </View>
     )
 }
